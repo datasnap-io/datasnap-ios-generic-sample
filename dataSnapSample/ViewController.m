@@ -2,11 +2,10 @@
 // Copyright (c) 2015 Datasnapio. All rights reserved.
 //
 
+#import <DataSnapSdk/DSIOClient.h>
+#import <DataSnapSdk/DSIOSampleData.h>
+#import <DataSnapSdk/DSIOEvents.h>
 #import "ViewController.h"
-#import "DSIOClient.h"
-#import "DSIOSampleData.h"
-#import "DSIOProperties.h"
-#import "DSIOEvents.h"
 
 NSString *currentDate() {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -35,7 +34,6 @@ NSString *currentDate() {
                                    selector:@selector(callEvents:) userInfo:nil repeats:YES];
 }
 
-
 // mimic events - for sample scenario without an event listener configured
 - (void)callEvents:(NSTimer *)t {
     [self buildBeaconEvent];
@@ -49,7 +47,6 @@ NSString *currentDate() {
     NSLog(message);
     DeviceLog(message);
 }
-
 
 /*
 *  This sample function shows how to get the properties required by the Datasnap API from DSIOEvents.

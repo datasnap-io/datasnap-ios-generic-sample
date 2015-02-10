@@ -2,8 +2,8 @@
 //  Copyright (c) 2014 Datasnap.io. All rights reserved.
 //  Datasnap Generic Sample
 
+#import <DataSnapSdk/DSIOClient.h>
 #import "AppDelegate.h"
-#import "DSIOClient.h"
 
 @implementation AppDelegate
 
