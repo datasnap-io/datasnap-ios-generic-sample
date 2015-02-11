@@ -2,9 +2,9 @@
 // Copyright (c) 2015 Datasnapio. All rights reserved.
 //
 
-#import <DataSnapSdk/DSIOClient.h>
-#import <DataSnapSdk/DSIOSampleData.h>
-#import <DataSnapSdk/DSIOEvents.h>
+#import <dsiofwk/DSIOClient.h>
+#import <dsiofwk/DSIOSampleData.h>
+#import <dsiofwk/DSIOEvents.h>
 #import "ViewController.h"
 
 NSString *currentDate() {
