@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Framework.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>dataSnapSample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>F1AFA3121A8ACA0400BA8F3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F1C6664C1A849FD900389838</key>
 		<dict>
 			<key>primary</key>

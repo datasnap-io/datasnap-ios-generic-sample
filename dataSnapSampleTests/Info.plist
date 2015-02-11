@@ -20,5 +20,7 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Integration with DataSnap.io Location SDK</string>
 </dict>
 </plist>
