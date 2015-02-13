@@ -1,7 +1,7 @@
 DataSnapClient
 =================
 
-A iOS Sample app the scans for Estimote beacons and uses the SDK for [DataSnap.io](http://datasnap.io) 
+An iOS Sample app that scans for Estimote beacons and uses the SDK for [DataSnap.io](http://datasnap.io) 
 
 ## Documentation:
 
