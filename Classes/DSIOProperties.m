@@ -251,19 +251,20 @@ static NSMutableDictionary *__globalData;
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
 
     NSMutableDictionary *dataDict = [NSMutableDictionary new];
-    dataDict[@"device"] = [NSMutableDictionary new];
-    dataDict[@"txn_id"] = [DSIOProperties transactionID];
-    dataDict[@"created"] = [DSIOProperties currentDate];
+    dataDict[@"datasnap"] = [NSMutableDictionary new];
+    dataDict[@"datasnap"][@"device"] = [NSMutableDictionary new];
+    dataDict[@"datasnap"][@"txn_id"] = [DSIOProperties transactionID];
+    dataDict[@"datasnap"][@"created"] = [DSIOProperties currentDate];
 
     [data enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([[self getDataSnapDeviceKeys] containsObject:key]) {
-            dataDict[@"device"][key] = data[key];
+            dataDict[@"datasnap"][@"device"][key] = data[key];
         } else if ([[self getUserIdentificationKeys] containsObject:key]) {
             dataDict[@"user"][@"id"][key] = data[key];
         }
     }];
     NSDictionary *carrierData = [DSIOProperties getCarrierData];
-    [dataDict[@"device"] addNotNilEntriesFromDictionary:carrierData];
+    [dataDict[@"datasnap"][@"device"] addNotNilEntriesFromDictionary:carrierData];
     return dataDict;
 }
 // TODO - move or refactor this pattern
