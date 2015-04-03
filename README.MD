@@ -10,7 +10,7 @@ See http://datasnap-io.github.io/sendingdata/ for more information on event type
 ### Quickstart
 
 1. ```#import "DataSnapClient/DSIOClient.h"``` in your source
-2. Initialize the Client wiht the proper logging. If your debiugging we recommend setting logging to true.
+2. Initialize the Client with the proper logging. If your debugging we recommend setting logging to true.
 
  ```objective-c
  
