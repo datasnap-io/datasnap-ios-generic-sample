@@ -10,8 +10,18 @@ See http://datasnap-io.github.io/sendingdata/ for more information on event type
 ### Quickstart
 
 1. `#import "DataSnapClient/DSIOClient.h"` in your source
-2. `[DSIOClient setupWithOrgAndProjIDs:@"" projectId:@"" APIKey:@"" APISecret:@""]`
+2. Initialize the Client wiht the proper logging. If your debiugging we recommend setting logging to true
 
+ `(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [DSIOClient setupWithOrgAndProjIDs:@"2qM5ckFqzFCcCIdY7xYhBc"
+                             projectId:@"2qM5ckFqzFCcCIdY7xYhBc"
+                                APIKey:@"5Z0TKJ8GLZOR40IU4CBOEH78B"
+                             APISecret:@"PDGIbwW25CbUkRSIp/OOB+WniDDudG/Pu+jfjzAEfwQ"
+                             logging:true
+                              eventNum:15];
+
+    return YES;
+    }`
 ### How to send events
 
 DSIOEvents contains arrays with keys, representing the properties required for each event type.
