@@ -3,7 +3,7 @@
 //
 
 #import "ViewController.h"
-#import <DSIOClient/DSIOClient.h>
+#import "DSIOClient.h"
 
 // Unique user ID
 static NSString *global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
