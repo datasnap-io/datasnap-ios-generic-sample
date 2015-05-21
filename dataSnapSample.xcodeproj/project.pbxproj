@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39AE67101B0D631200393929 /* DSIOClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AE670F1B0D631200393929 /* DSIOClient.framework */; };
-		39AE67121B0D631D00393929 /* DSIOClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39AE670F1B0D631200393929 /* DSIOClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3921B4631B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3921B4621B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
 		F1C6665F1A849FD900389838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6665D1A849FD900389838 /* Main.storyboard */; };
@@ -37,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				39AE67121B0D631D00393929 /* DSIOClient.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,7 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		39AE670F1B0D631200393929 /* DSIOClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DSIOClient.framework; sourceTree = "<group>"; };
+		3921B4611B0E9C6E00E976C0 /* DSIOClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOClient.h; sourceTree = "<group>"; };
+		3921B4621B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libdatasnap-ios-sdk-Aggregate.a"; sourceTree = "<group>"; };
 		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39AE67101B0D631200393929 /* DSIOClient.framework in Frameworks */,
+				3921B4631B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,9 +83,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3921B4601B0E9C6E00E976C0 /* DSIOClient-1.0.2 */ = {
+			isa = PBXGroup;
+			children = (
+				3921B4611B0E9C6E00E976C0 /* DSIOClient.h */,
+				3921B4621B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a */,
+			);
+			path = "DSIOClient-1.0.2";
+			sourceTree = "<group>";
+		};
 		F1C666441A849FD900389838 = {
 			isa = PBXGroup;
 			children = (
+				3921B4601B0E9C6E00E976C0 /* DSIOClient-1.0.2 */,
 				F1C6664F1A849FD900389838 /* dataSnapSample */,
 				F1C6666C1A849FD900389838 /* dataSnapSampleTests */,
 				F1C6664E1A849FD900389838 /* Products */,
@@ -159,7 +168,6 @@
 		F2B0AA13EE21C735CAD7B80D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				39AE670F1B0D631200393929 /* DSIOClient.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -416,8 +424,13 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/datasnap-ios-sdk",
+					"$(PROJECT_DIR)/DSIOClient-1.0.2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -438,8 +451,13 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
 				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/datasnap-ios-sdk",
+					"$(PROJECT_DIR)/DSIOClient-1.0.2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
