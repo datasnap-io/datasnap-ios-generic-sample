@@ -3,7 +3,7 @@
 //  Datasnap Generic Sample
 
 #import "AppDelegate.h"
-#import <DSIOClient/DSIOClient.h>
+#import "DSIOClient.h"
 
 @implementation AppDelegate
 
