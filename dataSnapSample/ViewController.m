@@ -4,13 +4,13 @@
 
 #import "ViewController.h"
 #import "DSIOClient.h"
-#import "DSIOSampleData.h"
-#import "DSIOProperties.h"
-#import "DSIOEvents.h"
+
+// Unique user ID
+static NSString *global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
 
 NSString *currentDate() {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
     NSDate *date = [NSDate new];
     NSString *formattedDateString = [dateFormatter stringFromDate:date];
     return formattedDateString;
@@ -21,74 +21,113 @@ NSString *currentDate() {
 @end
 
 @implementation ViewController
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     return self;
 }
 
 - (void)viewDidLoad {
-    [self buildBeaconEvent];
-    [self buildGenericEvent];
 
-
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self
-                                   selector:@selector(callEvents:) userInfo:nil repeats:YES];
-}
-
-
-// mimic events - for sample scenario without an event listener configured
-- (void)callEvents:(NSTimer *)t {
-    [self buildBeaconEvent];
-    [self buildGenericEvent];
-
+    [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(callEvents)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
 - (void)logToDeviceAndConsole:(NSString *)eventName{
-    NSString *eventAndTime = [NSString stringWithFormat:eventName, currentDate()];
-    NSString *message = [NSString stringWithFormat:@"%@\n", eventAndTime];
-    NSLog(message);
-    DeviceLog(message);
+    NSString *message = [NSString stringWithFormat:@"%@ %@\n", eventName, currentDate()];
+    NSLog(@"%@", message);
+    DeviceLog(@"%@", message);
 }
 
-/*
-*  This sample function shows how to build a beacon sighting event.
-*  The beacon data is sample data- but the other properties (user and datasnap) are obtained using real data
-*  and can be reused as is in your application. The "user" property is important because the value "datasnap_app_user_id" is required
-*  by the SDK.
-* */
-
-- (void)buildBeaconEvent {
-    // Create a top level dictionary and pass values to it
-    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *beaconDictionary = [[NSMutableDictionary alloc] init];
-
-    [beaconDictionary addEntriesFromDictionary:@{ @"identifier" : [NSString stringWithFormat:@"%@/%@/%@", @"SampleBeacon", @"123",@"23"],
-            @"distance" : @"45", @"major" : @"23",
-            @"minor" : @"123", @"rssi" : [NSString stringWithFormat:@"%d", 34]}];
-
-    [eventData addEntriesFromDictionary:@{@"beacon" : beaconDictionary, @"event_type" : @"beacon_sighting",
-            @"datasnap" : [DSIOProperties  getDataSnap], @"user" : [DSIOProperties getUserInfo] }];
-    [[DSIOClient sharedClient] genericEvent:eventData];
-    [self logToDeviceAndConsole:@"Datasnap Estimote Beacon Sighting Event %@"];
-    NSLog(@"Dictionary: %@", [eventData description]);
-
+- (void)callEvents {
+    
+    [self exampleBeaconArrive];
+    [self exampleBeaconSighting];
+    [self exampleBeaconDepart];
+    [self exampleGeofenceArrive];
+    [self exampleGeofenceDepart];
+    [self exampleGPSSighting];
 }
 
-/*
-*  This sample function illustrates how to send events to the Datasnap API using a generic function.
-*
-* */
+/**
+ * Example of a beacon sighting
+ */
+- (void)exampleBeaconSighting {
+    NSDictionary *beaconData = @{@"event_type" : @"beacon_sighting",
+                                 @"beacon" : @{@"identifier": @"3333333"},
+                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"datasnap": @{@"created": currentDate()}};
+    
+    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    [self logToDeviceAndConsole:@"Datasnap Example Beacon Sighting Event"];
+}
 
-- (void)buildGenericEvent{
-    // Create a top level dictionary and pass values to it
-    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
-    [communication addEntriesFromDictionary:@{@"identifier" : @"in_kitchen_for_a_minute", @"status":  @"background"}];
-    NSMutableDictionary *dataSnapSampleValues =  [DSIOSampleData getDataSnapSampleValues] ;
-    [eventData addEntriesFromDictionary:@{@"communication" : communication, @"datasnap":  dataSnapSampleValues
-            ,@"event_type" : @"generic_communication_example" }];
-    [[DSIOClient sharedClient] genericEvent:eventData];
-    [self logToDeviceAndConsole:@"Datasnap Generic Communication Event %@"];
+/**
+ * Example of a beacon arrival
+ */
+- (void)exampleBeaconArrive {
+    NSDictionary *beaconData = @{@"event_type" : @"beacon_arrive",
+                                 @"beacon" : @{@"identifier": @"3333333"},
+                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"datasnap": @{@"created": currentDate()}};
+    
+    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    [self logToDeviceAndConsole:@"Datasnap Example Beacon Arrival Event"];
+}
+
+/**
+ * Example of a beacon arrival
+ */
+- (void)exampleBeaconDepart {
+    NSDictionary *beaconData = @{@"event_type" : @"beacon_depart",
+                                 @"beacon" : @{@"identifier": @"3333333"},
+                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"datasnap": @{@"created": currentDate()}};
+    
+    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    [self logToDeviceAndConsole:@"Datasnap Example Beacon Departure Event"];
+}
+
+/**
+ * Example of a geofence arrival
+ */
+- (void)exampleGeofenceArrive {
+    NSDictionary *beaconData = @{@"event_type" : @"geofence_arrive",
+                                 @"geofence" : @{@"identifier": @"44444444"},
+                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"datasnap": @{@"created": currentDate()}};
+    
+    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    [self logToDeviceAndConsole:@"Datasnap Example Geofence Arrival Event"];
+}
+
+/**
+ * Example of a geofence arrival
+ */
+- (void)exampleGeofenceDepart {
+    NSDictionary *beaconData = @{@"event_type" : @"geofence_depart",
+                                 @"geofence" : @{@"identifier": @"44444444"},
+                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"datasnap": @{@"created": currentDate()}};
+    
+    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    [self logToDeviceAndConsole:@"Datasnap Example Geofence Departure Event"];
+}
+
+/**
+ * Example of a geofence arrival
+ */
+- (void)exampleGPSSighting {
+    NSDictionary *beaconData = @{@"event_type" : @"global_position_sighting",
+                                 @"location" : @{@"coordinates" : @[@"32.89545949009762, -117.19463284827117"]},
+                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"datasnap": @{@"created": currentDate()}};
+    
+    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    [self logToDeviceAndConsole:@"Datasnap Example GPS Sighting Event"];
 }
 
 

@@ -9,8 +9,6 @@
 
 @property(strong, nonatomic) IBOutlet UITextField *GarsTextField;
 
-- (IBAction)textFieldReturn:(id)sender;
-
 @end
 
 #define DeviceLog(message, ...) self.deviceDisplay.text = [self.deviceDisplay.text stringByAppendingString:[NSString stringWithFormat:message, ##__VA_ARGS__]]
