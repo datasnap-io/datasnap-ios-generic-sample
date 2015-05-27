@@ -67,7 +67,8 @@
 - (void)didRecieveNotification:(NSDictionary *)notification {
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_sent",
-                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"]},
+                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"],
+                                                                               @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
                                                            @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                                            @"datasnap": @{@"created": currentDate()}}];
     [[DSIOClient sharedClient] genericEvent:eventData];
@@ -76,7 +77,8 @@
 - (void)didOpenNotification:(NSDictionary *)notification {
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_open",
-                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"]},
+                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"],
+                                                                               @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
                                                            @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                                            @"datasnap": @{@"created": currentDate()}}];
     [[DSIOClient sharedClient] genericEvent:eventData];
