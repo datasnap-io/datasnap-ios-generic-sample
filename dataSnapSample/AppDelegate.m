@@ -3,7 +3,15 @@
 //  Datasnap Generic Sample
 
 #import "AppDelegate.h"
+
+#import <AdSupport/ASIdentifierManager.h>
+
 #import "DSIOClient.h"
+
+#import "UAirship.h"
+#import "UAConfig.h"
+
+#import "UserIDStore.h"
 
 @implementation AppDelegate
 
@@ -13,7 +21,20 @@
                         APIKey:@"5Z0TKJ8GLZOR40IU4CBOEH78B"
                      APISecret:@"PDGIbwW25CbUkRSIp/OOB+WniDDudG/Pu+jfjzAEfwQ"
                        logging:true
-                      eventNum:15];
+                      eventNum:1];
+    
+    UAConfig *uaConfig = [UAConfig defaultConfig];
+    [UAirship takeOff:uaConfig];
+    
+    [UAirship push].userPushNotificationsEnabled = YES;
+    
+    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
+    [UAirship push].pushNotificationDelegate = self;
+    
+    [[UserIDStore sharedInstance] setVenderID:idfv];
+    [[UserIDStore sharedInstance] setAdversiterID:adId];
 
     return YES;
     }
@@ -41,6 +62,40 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)didRecieveNotification:(NSDictionary *)notification {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                      initWithDictionary:@{@"event_type": @"ds_communication_sent",
+                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"]},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"datasnap": @{@"created": currentDate()}}];
+    [[DSIOClient sharedClient] genericEvent:eventData];
+}
+
+- (void)didOpenNotification:(NSDictionary *)notification {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                      initWithDictionary:@{@"event_type": @"ds_communication_open",
+                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"]},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"datasnap": @{@"created": currentDate()}}];
+    [[DSIOClient sharedClient] genericEvent:eventData];
+}
+
+- (void)launchedFromNotification:(NSDictionary *)notification {
+    // Called when opened communication
+    NSLog(@"launchedFromNotification: %@", notification);
+    [self didOpenNotification:notification];
+}
+
+- (void)receivedBackgroundNotification:(NSDictionary *)notification {
+    NSLog(@"receivedBackgroundNotification: %@", notification);
+    [self didRecieveNotification:notification];
+}
+
+- (void)receivedForegroundNotification:(NSDictionary *)notification {
+    NSLog(@"receivedForegroundNotification: %@", notification);
+    [self didRecieveNotification:notification];
 }
 
 @end

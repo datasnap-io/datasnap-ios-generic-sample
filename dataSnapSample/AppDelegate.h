@@ -3,8 +3,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UAPush.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>;
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate, UAPushNotificationDelegate>;
 
 @property(strong, nonatomic) UIWindow *window;
 

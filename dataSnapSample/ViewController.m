@@ -4,17 +4,10 @@
 
 #import "ViewController.h"
 #import "DSIOClient.h"
+#import "UserIDStore.h"
 
 // Unique user ID
 static NSString *global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
-
-NSString *currentDate() {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
-    NSDate *date = [NSDate new];
-    NSString *formattedDateString = [dateFormatter stringFromDate:date];
-    return formattedDateString;
-}
 
 @interface ViewController ()
 
@@ -33,7 +26,7 @@ NSString *currentDate() {
                                      target:self
                                    selector:@selector(callEvents)
                                    userInfo:nil
-                                    repeats:YES];
+                                    repeats:NO];
 }
 
 - (void)logToDeviceAndConsole:(NSString *)eventName{
@@ -58,7 +51,7 @@ NSString *currentDate() {
 - (void)exampleBeaconSighting {
     NSDictionary *beaconData = @{@"event_type" : @"beacon_sighting",
                                  @"beacon" : @{@"identifier": @"3333333"},
-                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                  @"datasnap": @{@"created": currentDate()}};
     
     [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
@@ -71,7 +64,7 @@ NSString *currentDate() {
 - (void)exampleBeaconArrive {
     NSDictionary *beaconData = @{@"event_type" : @"beacon_arrive",
                                  @"beacon" : @{@"identifier": @"3333333"},
-                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                  @"datasnap": @{@"created": currentDate()}};
     
     [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
@@ -84,7 +77,7 @@ NSString *currentDate() {
 - (void)exampleBeaconDepart {
     NSDictionary *beaconData = @{@"event_type" : @"beacon_depart",
                                  @"beacon" : @{@"identifier": @"3333333"},
-                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                  @"datasnap": @{@"created": currentDate()}};
     
     [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
@@ -97,7 +90,7 @@ NSString *currentDate() {
 - (void)exampleGeofenceArrive {
     NSDictionary *beaconData = @{@"event_type" : @"geofence_arrive",
                                  @"geofence" : @{@"identifier": @"44444444"},
-                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                  @"datasnap": @{@"created": currentDate()}};
     
     [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
@@ -110,7 +103,7 @@ NSString *currentDate() {
 - (void)exampleGeofenceDepart {
     NSDictionary *beaconData = @{@"event_type" : @"geofence_depart",
                                  @"geofence" : @{@"identifier": @"44444444"},
-                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                  @"datasnap": @{@"created": currentDate()}};
     
     [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
@@ -123,7 +116,7 @@ NSString *currentDate() {
 - (void)exampleGPSSighting {
     NSDictionary *beaconData = @{@"event_type" : @"global_position_sighting",
                                  @"location" : @{@"coordinates" : @[@"32.89545949009762, -117.19463284827117"]},
-                                 @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
+                                 @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                  @"datasnap": @{@"created": currentDate()}};
     
     [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
