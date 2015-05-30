@@ -24,7 +24,10 @@
                       eventNum:1];
     
     UAConfig *uaConfig = [UAConfig defaultConfig];
+    uaConfig.developmentLogLevel = UALogLevelDebug;
     [UAirship takeOff:uaConfig];
+    
+     UA_LDEBUG(@"Config:\n%@", [uaConfig description]);
     
     [UAirship push].userPushNotificationsEnabled = YES;
     
@@ -40,6 +43,14 @@
     }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                      initWithDictionary:@{@"event_type": @"ds_communication_sent",
+                                                           @"communication": @{@"identifier":@"",
+                                                                               @"description":@""},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"datasnap": @{@"created": currentDate()}}];
+    [[DSIOClient sharedClient] genericEvent:eventData];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -65,6 +76,7 @@
 }
 
 - (void)didRecieveNotification:(NSDictionary *)notification {
+    
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_sent",
                                                            @"communication": @{@"identifier":[notification objectForKey:@"_"],
@@ -72,6 +84,41 @@
                                                            @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
                                                            @"datasnap": @{@"created": currentDate()}}];
     [[DSIOClient sharedClient] genericEvent:eventData];
+    
+    
+    
+    
+}
+
+
+- (void)didRecieveRemoteNotification:(NSDictionary *)notification {
+    
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                      initWithDictionary:@{@"event_type": @"ds_communication_sent",
+                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"],
+                                                                               @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"datasnap": @{@"created": currentDate()}}];
+    [[DSIOClient sharedClient] genericEvent:eventData];
+    
+    
+     NSLog(@"didRecieveRemoteNotification: %@", notification);
+    
+}
+
+- (void)didNotSendNotification:(NSDictionary *)notification {
+    
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                      initWithDictionary:@{@"event_type": @"ds_communication_not_sent",
+                                                           @"communication": @{@"identifier":[notification objectForKey:@"_"],
+                                                                               @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"datasnap": @{@"created": currentDate()}}];
+    [[DSIOClient sharedClient] genericEvent:eventData];
+    
+    
+    
+    
 }
 
 - (void)didOpenNotification:(NSDictionary *)notification {
@@ -84,20 +131,47 @@
     [[DSIOClient sharedClient] genericEvent:eventData];
 }
 
+
+
 - (void)launchedFromNotification:(NSDictionary *)notification {
     // Called when opened communication
     NSLog(@"launchedFromNotification: %@", notification);
     [self didOpenNotification:notification];
 }
 
-- (void)receivedBackgroundNotification:(NSDictionary *)notification {
+- (void)receivedBackgroundNotification:(NSDictionary *)notification
+                fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"receivedBackgroundNotification: %@", notification);
-    [self didRecieveNotification:notification];
+    NSString *tag = [notification objectForKey:@"^+t"];
+    
+    if(![tag  isEqual: @"DS_ABTest"]){
+        NSLog(@"tag NOT found: DS_ABTest" );
+        [self didRecieveNotification:notification];
+        completionHandler(UIBackgroundFetchResultNoData);
+    }else{
+        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
+        // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
+        
+    }
+    
+    
 }
 
-- (void)receivedForegroundNotification:(NSDictionary *)notification {
+- (void)receivedForegroundNotification:(NSDictionary *)notification
+                fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"receivedForegroundNotification: %@", notification);
-    [self didRecieveNotification:notification];
+    
+    NSString *tag = [notification objectForKey:@"^+t"];
+    
+    if(![tag  isEqual: @"DS_ABTest"]){
+        NSLog(@"tag NOT found: DS_ABTest" );
+        [self didRecieveNotification:notification];
+        completionHandler(UIBackgroundFetchResultNoData);
+    }else{
+        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
+       // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
+        
+    }
 }
 
 @end
