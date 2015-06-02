@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3921B4631B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3921B4621B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a */; };
+		154825121B1B8DFC004E5CBF /* Datasnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154825111B1B8DFC004E5CBF /* Datasnap.framework */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
 		F1C6665F1A849FD900389838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6665D1A849FD900389838 /* Main.storyboard */; };
@@ -20,6 +20,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		154825071B1B8D11004E5CBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 154825011B1B8D11004E5CBF /* datasnap-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3921B3EC1B0E921E00E976C0;
+			remoteInfo = "datasnap-ios-sdk";
+		};
+		154825091B1B8D11004E5CBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 154825011B1B8D11004E5CBF /* datasnap-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3921B3F71B0E921F00E976C0;
+			remoteInfo = "datasnap-ios-sdkTests";
+		};
+		1548250C1B1B8D68004E5CBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 154825011B1B8D11004E5CBF /* datasnap-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3921B3EB1B0E921E00E976C0;
+			remoteInfo = "datasnap-ios-sdk";
+		};
 		F1C6666A1A849FD900389838 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1C666451A849FD900389838 /* Project object */;
@@ -43,8 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3921B4611B0E9C6E00E976C0 /* DSIOClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOClient.h; sourceTree = "<group>"; };
-		3921B4621B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libdatasnap-ios-sdk-Aggregate.a"; sourceTree = "<group>"; };
+		154825011B1B8D11004E5CBF /* datasnap-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "datasnap-ios-sdk.xcodeproj"; path = "../datasnap-ios-sdk/datasnap-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
+		154825111B1B8DFC004E5CBF /* Datasnap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Datasnap.framework; path = "../../datasnap-ios-sdk/build/Datasnap.framework"; sourceTree = "<group>"; };
 		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3921B4631B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a in Frameworks */,
+				154825121B1B8DFC004E5CBF /* Datasnap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,19 +104,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3921B4601B0E9C6E00E976C0 /* DSIOClient-1.0.2 */ = {
+		154825021B1B8D11004E5CBF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3921B4611B0E9C6E00E976C0 /* DSIOClient.h */,
-				3921B4621B0E9C6E00E976C0 /* libdatasnap-ios-sdk-Aggregate.a */,
+				154825081B1B8D11004E5CBF /* libDatasnap.a */,
+				1548250A1B1B8D11004E5CBF /* datasnap-ios-sdkTests.xctest */,
 			);
-			path = "DSIOClient-1.0.2";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F1C666441A849FD900389838 = {
 			isa = PBXGroup;
 			children = (
-				3921B4601B0E9C6E00E976C0 /* DSIOClient-1.0.2 */,
+				154825011B1B8D11004E5CBF /* datasnap-ios-sdk.xcodeproj */,
 				F1C6664F1A849FD900389838 /* dataSnapSample */,
 				F1C6666C1A849FD900389838 /* dataSnapSampleTests */,
 				F1C6664E1A849FD900389838 /* Products */,
@@ -128,6 +149,7 @@
 		F1C666501A849FD900389838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				154825111B1B8DFC004E5CBF /* Datasnap.framework */,
 				F1C666521A849FD900389838 /* main.m */,
 				F2B0A29D907F4620EFD28979 /* Base.lproj */,
 				F2B0ABA92FB77FC92DBF18F8 /* en.lproj */,
@@ -195,6 +217,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1548250D1B1B8D68004E5CBF /* PBXTargetDependency */,
 			);
 			name = dataSnapSample;
 			productName = dataSnapSample;
@@ -249,6 +272,12 @@
 			mainGroup = F1C666441A849FD900389838;
 			productRefGroup = F1C6664E1A849FD900389838 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 154825021B1B8D11004E5CBF /* Products */;
+					ProjectRef = 154825011B1B8D11004E5CBF /* datasnap-ios-sdk.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F1C6664C1A849FD900389838 /* dataSnapSample */,
@@ -256,6 +285,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		154825081B1B8D11004E5CBF /* libDatasnap.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDatasnap.a;
+			remoteRef = 154825071B1B8D11004E5CBF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1548250A1B1B8D11004E5CBF /* datasnap-ios-sdkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "datasnap-ios-sdkTests.xctest";
+			remoteRef = 154825091B1B8D11004E5CBF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F1C6664B1A849FD900389838 /* Resources */ = {
@@ -301,6 +347,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1548250D1B1B8D68004E5CBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "datasnap-ios-sdk";
+			targetProxy = 1548250C1B1B8D68004E5CBF /* PBXContainerItemProxy */;
+		};
 		F1C6666B1A849FD900389838 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F1C6664C1A849FD900389838 /* dataSnapSample */;
@@ -421,6 +472,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"/Users/nbrown/Dropbox/Projects/datasnap.io/Generic/datasnap-ios-sdk/build",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
@@ -446,6 +498,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"/Users/nbrown/Dropbox/Projects/datasnap.io/Generic/datasnap-ios-sdk/build",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
 				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";

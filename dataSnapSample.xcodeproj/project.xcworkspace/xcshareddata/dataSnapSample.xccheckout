@@ -10,6 +10,8 @@
 	<string>dataSnapSample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0FDD4FA964377F089C5660A550382065286FF200</key>
+		<string>github.com:datasnap-io/datasnap-ios-sdk.git</string>
 		<key>AE94850012EB59B4B155389864B8E218BE145D28</key>
 		<string>github.com:datasnap-io/datasnap-ios-generic-sample.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>dataSnapSample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>0FDD4FA964377F089C5660A550382065286FF200</key>
+		<string>../../../datasnap-ios-sdk</string>
 		<key>AE94850012EB59B4B155389864B8E218BE145D28</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>AE94850012EB59B4B155389864B8E218BE145D28</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0FDD4FA964377F089C5660A550382065286FF200</string>
+			<key>IDESourceControlWCCName</key>
+			<string>datasnap-ios-sdk</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
