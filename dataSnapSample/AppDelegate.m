@@ -25,6 +25,7 @@
     
     UAConfig *uaConfig = [UAConfig defaultConfig];
     uaConfig.developmentLogLevel = UALogLevelDebug;
+    uaConfig.automaticSetupEnabled = NO;
     [UAirship takeOff:uaConfig];
     
      UA_LDEBUG(@"Config:\n%@", [uaConfig description]);
@@ -38,7 +39,16 @@
     
     [[UserIDStore sharedInstance] setVenderID:idfv];
     [[UserIDStore sharedInstance] setAdversiterID:adId];
-
+    
+    
+    // These three lines are just to prove that i can set tags for a device via tghe SDK and the behaviour of tags in general. It looks like pulling a campaign automatically tags the device with the tags used to flight
+    // the campaign.
+    NSLog(@"Device Tags Currently Registered::::: %@", [UAirship push].tags);
+    [UAirship push].tags = @[@"DS_Employee", @"VIP"];
+    [[UAirship push] updateRegistration];
+    
+    
+    
     return YES;
     }
 
@@ -77,16 +87,40 @@
 
 - (void)didRecieveNotification:(NSDictionary *)notification {
     
+    
+    NSMutableDictionary *tempDic = [[notification objectForKey:@"aps"] objectForKey:@"alert"];
+    NSString *title = [tempDic objectForKey:@"title"];
+    
+    
+    // campaign and communication have the same identifiers here since there is no concept of a campaign having multiple communications/creatives.
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_sent",
                                                            @"communication": @{@"identifier":[notification objectForKey:@"_"],
-                                                                               @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
-                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                                               @"name":title,
+                                                                               @"description":title},
+                                                           @"campaign": @{@"identifier":[notification objectForKey:@"_"],
+                                                                               @"name":title,
+                                                                               @"description":title},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]},
+                                                                      @"tags": [UAirship push].tags},
                                                            @"datasnap": @{@"created": currentDate()}}];
     [[DSIOClient sharedClient] genericEvent:eventData];
     
+    NSLog(@"local notification and application is active");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Urban Airship Event"
+                                                    message:title
+                                                   delegate:self
+                                          cancelButtonTitle:@"Yes"
+                                          otherButtonTitles:@"No",nil];
+    [alert show];
+    
+    UILocalNotification *backupAlarm = [[UILocalNotification alloc] init];
+    NSDate *dateTime;
+    backupAlarm.fireDate = dateTime;
+    backupAlarm.alertBody = title;
     
     
+    [[UIApplication sharedApplication] scheduleLocalNotification: backupAlarm];
     
 }
 
@@ -97,7 +131,11 @@
                                       initWithDictionary:@{@"event_type": @"ds_communication_sent",
                                                            @"communication": @{@"identifier":[notification objectForKey:@"_"],
                                                                                @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
-                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"campaign": @{@"identifier":[notification objectForKey:@"_"],
+                                                                          @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]},
+                                                                      @"tags": [UAirship push].tags},
+
                                                            @"datasnap": @{@"created": currentDate()}}];
     [[DSIOClient sharedClient] genericEvent:eventData];
     
@@ -112,7 +150,11 @@
                                       initWithDictionary:@{@"event_type": @"ds_communication_not_sent",
                                                            @"communication": @{@"identifier":[notification objectForKey:@"_"],
                                                                                @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
-                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"campaign": @{@"identifier":[notification objectForKey:@"_"],
+                                                                          @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]},
+                                                                      @"tags": [UAirship push].tags},
+
                                                            @"datasnap": @{@"created": currentDate()}}];
     [[DSIOClient sharedClient] genericEvent:eventData];
     
@@ -126,7 +168,10 @@
                                       initWithDictionary:@{@"event_type": @"ds_communication_open",
                                                            @"communication": @{@"identifier":[notification objectForKey:@"_"],
                                                                                @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
-                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
+                                                           @"campaign": @{@"identifier":[notification objectForKey:@"_"],
+                                                                          @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]},
+                                                                      @"tags": [UAirship push].tags},
                                                            @"datasnap": @{@"created": currentDate()}}];
     [[DSIOClient sharedClient] genericEvent:eventData];
 }
@@ -139,26 +184,19 @@
     [self didOpenNotification:notification];
 }
 
+
+
 - (void)receivedBackgroundNotification:(NSDictionary *)notification
                 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    NSLog(@"receivedBackgroundNotification: %@", notification);
-    NSString *tag = [notification objectForKey:@"^+t"];
     
-    if(![tag  isEqual: @"DS_ABTest"]){
-        NSLog(@"tag NOT found: DS_ABTest" );
-        [self didRecieveNotification:notification];
-        completionHandler(UIBackgroundFetchResultNoData);
-    }else{
-        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
-        // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
-        
-    }
+    // Do something with the notification in the background
     
-    
+    // Be sure to call the completion handler with a UIBackgroundFetchResult
+    completionHandler(UIBackgroundFetchResultNoData);
 }
 
-- (void)receivedForegroundNotification:(NSDictionary *)notification
-                fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
+- (void)receivedForegroundNotification:(NSDictionary *)notification {
     NSLog(@"receivedForegroundNotification: %@", notification);
     
     NSString *tag = [notification objectForKey:@"^+t"];
@@ -166,12 +204,73 @@
     if(![tag  isEqual: @"DS_ABTest"]){
         NSLog(@"tag NOT found: DS_ABTest" );
         [self didRecieveNotification:notification];
-        completionHandler(UIBackgroundFetchResultNoData);
+    
     }else{
         //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
        // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
         
     }
 }
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    UA_LTRACE(@"Application registered for remote notifications with device token: %@", deviceToken);
+    [[UAirship push] appRegisteredForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    UA_LTRACE(@"Application did register with user notification types %ld", (unsigned long)notificationSettings.types);
+    [[UAirship push] appRegisteredUserNotificationSettings];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *) error {
+    UA_LERR(@"Application failed to register for remote notifications with error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    UA_LINFO(@"Application received remote notification no handler: %@", userInfo);
+    //[[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState];
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    UA_LINFO(@"Application received remote notification fetchCompletionHandler: %@", userInfo);
+    //[[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
+    
+    
+    
+    NSString *tag = [userInfo objectForKey:@"DS_LIFT"];
+    
+    if(![tag  isEqual: @"OFF"]){
+        NSLog(@"DS_LIFT OFF" );
+        [self didRecieveNotification:userInfo];
+        
+    }else{
+         NSLog(@"tag FOUND PROCESSING A/B: DS_LIFT ON" );
+        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
+        // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    completionHandler(UIBackgroundFetchResultNoData);
+    
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())handler {
+    UA_LINFO(@"Received remote notification button interaction: %@ notification: %@", identifier, userInfo);
+    //[[UAirship push] appReceivedActionWithIdentifier:identifier notification:userInfo applicationState:application.applicationState completionHandler:handler];
+}
+
+
+
+
+
 
 @end
