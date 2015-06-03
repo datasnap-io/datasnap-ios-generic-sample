@@ -14,6 +14,7 @@
 
 @property (assign) BOOL started;
 @property (nonatomic) GMBLPlaceManager *placeManager;
+@property (nonatomic) GMBLBeaconManager *beaconManager;
 
 @end
 
@@ -24,6 +25,9 @@
     if (self) {
         self.placeManager = [[GMBLPlaceManager alloc] init];
         self.placeManager.delegate = self;
+        
+        self.beaconManager = [GMBLBeaconManager new];
+        self.beaconManager.delegate = self;
 
         // Hide the power alert by default
         if (![[NSUserDefaults standardUserDefaults] valueForKey:@"gmbl_hide_bt_power_alert_view"]) {
@@ -66,6 +70,7 @@
     }
 
     [GMBLPlaceManager startMonitoring];
+     [self.beaconManager startListening];
 
     self.started = YES;
 
@@ -110,6 +115,12 @@
     UA_LDEBUG(@"Exited a Gimbal Place: %@ Entrance date:%@ Exit Date:%@", visit.place.name, visit.arrivalDate, visit.departureDate);
 
     [self reportPlaceEventToAnalytics:visit.place boundaryEvent:UABoundaryEventExit];
+}
+
+- (void)beaconManager:(GMBLBeaconManager *)manager didReceiveBeaconSighting:(GMBLBeaconSighting *)sighting
+{
+    //This will be invoked when a user sights a beacon
+     //UA_LDEBUG(@"Beacon sighting: %@", sighting);
 }
 
 
