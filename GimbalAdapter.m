@@ -86,10 +86,12 @@
 - (void)reportPlaceEventToAnalytics:(GMBLPlace *) place boundaryEvent:(UABoundaryEvent) boundaryEvent {
     UARegionEvent *regionEvent = [UARegionEvent regionEventWithRegionID:place.identifier source:kSource boundaryEvent:boundaryEvent];
 
-    
+
     
     //log datasnap analytics
     UA_LDEBUG(@"Gimbal Application Identifer for Device. %@", [Gimbal applicationInstanceIdentifier]);
+    
+
     
     
     [[UAirship shared].analytics addEvent:regionEvent];
