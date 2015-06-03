@@ -8,6 +8,8 @@
 
 #import "DSIOClient.h"
 
+#import "GimbalAdapter.h"
+
 #import "UAirship.h"
 #import "UAConfig.h"
 
@@ -23,8 +25,11 @@
                        logging:true
                       eventNum:1];
     
+
+    
+    
     UAConfig *uaConfig = [UAConfig defaultConfig];
-    uaConfig.developmentLogLevel = UALogLevelDebug;
+    uaConfig.developmentLogLevel = UALogLevelTrace;
     uaConfig.automaticSetupEnabled = NO;
     [UAirship takeOff:uaConfig];
     
@@ -47,6 +52,11 @@
     [UAirship push].tags = @[@"DS_Employee", @"VIP"];
     [[UAirship push] updateRegistration];
     
+    
+    [Gimbal setAPIKey:@"76d28539-8e75-493e-bbc6-d9bde7857cb9" options:nil];
+    
+    [GimbalAdapter shared].bluetoothPoweredOffAlertEnabled = YES;
+    [[GimbalAdapter shared] startAdapter];
     
     
     return YES;
@@ -229,30 +239,30 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     UA_LINFO(@"Application received remote notification no handler: %@", userInfo);
-    //[[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState];
+    [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState];
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     UA_LINFO(@"Application received remote notification fetchCompletionHandler: %@", userInfo);
-    //[[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
+    [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
     
     
     
-    NSString *tag = [userInfo objectForKey:@"DS_LIFT"];
-    
-    if(![tag  isEqual: @"OFF"]){
-        NSLog(@"DS_LIFT OFF" );
-        [self didRecieveNotification:userInfo];
-        
-    }else{
-         NSLog(@"tag FOUND PROCESSING A/B: DS_LIFT ON" );
-        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
-        // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
-        
-        
-        
-        
-    }
+//    NSString *tag = [userInfo objectForKey:@"DS_LIFT"];
+//    
+//    if(![tag  isEqual: @"OFF"]){
+//        NSLog(@"DS_LIFT OFF" );
+//        [self didRecieveNotification:userInfo];
+//        
+//    }else{
+//         NSLog(@"tag FOUND PROCESSING A/B: DS_LIFT ON" );
+//        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
+//        // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
+//        
+//        
+//        
+//        
+//    }
     
     
     
@@ -265,7 +275,7 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())handler {
     UA_LINFO(@"Received remote notification button interaction: %@ notification: %@", identifier, userInfo);
-    //[[UAirship push] appReceivedActionWithIdentifier:identifier notification:userInfo applicationState:application.applicationState completionHandler:handler];
+    [[UAirship push] appReceivedActionWithIdentifier:identifier notification:userInfo applicationState:application.applicationState completionHandler:handler];
 }
 
 

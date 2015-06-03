@@ -42,6 +42,9 @@
 		39B9AC481B0FA33000FDE194 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B9AC411B0FA33000FDE194 /* MessageUI.framework */; };
 		39B9AC4A1B0FA35A00FDE194 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39B9AC491B0FA35A00FDE194 /* AirshipConfig.plist */; };
 		39B9AC4D1B151B9300FDE194 /* UserIDStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B9AC4C1B15189F00FDE194 /* UserIDStore.m */; };
+		CA0973C71B1E6D75003E10F5 /* gimbalsdk_2.14_ios in Resources */ = {isa = PBXBuildFile; fileRef = CA0973C61B1E6D75003E10F5 /* gimbalsdk_2.14_ios */; };
+		CA0973C91B1E6D7E003E10F5 /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0973C81B1E6D7E003E10F5 /* Gimbal.framework */; };
+		CA0973CC1B1E6F74003E10F5 /* GimbalAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0973CB1B1E6F74003E10F5 /* GimbalAdapter.m */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
 		F1C6665F1A849FD900389838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6665D1A849FD900389838 /* Main.storyboard */; };
@@ -271,6 +274,11 @@
 		39B9AC491B0FA35A00FDE194 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		39B9AC4B1B15189F00FDE194 /* UserIDStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserIDStore.h; sourceTree = "<group>"; };
 		39B9AC4C1B15189F00FDE194 /* UserIDStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserIDStore.m; sourceTree = "<group>"; };
+		CA0973C31B1E6D48003E10F5 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gimbal.framework; path = ../../Downloads/gimbalsdk_2.14_ios/Frameworks/Gimbal.framework; sourceTree = "<group>"; };
+		CA0973C61B1E6D75003E10F5 /* gimbalsdk_2.14_ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gimbalsdk_2.14_ios; sourceTree = "<group>"; };
+		CA0973C81B1E6D7E003E10F5 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gimbal.framework; path = gimbalsdk_2.14_ios/Frameworks/Gimbal.framework; sourceTree = "<group>"; };
+		CA0973CA1B1E6F74003E10F5 /* GimbalAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GimbalAdapter.h; path = ../GimbalAdapter.h; sourceTree = "<group>"; };
+		CA0973CB1B1E6F74003E10F5 /* GimbalAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GimbalAdapter.m; path = ../GimbalAdapter.m; sourceTree = "<group>"; };
 		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -302,6 +310,7 @@
 				39B9AC461B0FA33000FDE194 /* libz.dylib in Frameworks */,
 				39B9AC471B0FA33000FDE194 /* MapKit.framework in Frameworks */,
 				39B9AC481B0FA33000FDE194 /* MessageUI.framework in Frameworks */,
+				CA0973C91B1E6D7E003E10F5 /* Gimbal.framework in Frameworks */,
 				39B9AC351B0FA2F500FDE194 /* CFNetwork.framework in Frameworks */,
 				39B9AC361B0FA2F500FDE194 /* CoreGraphics.framework in Frameworks */,
 				39B9AC371B0FA2F500FDE194 /* Foundation.framework in Frameworks */,
@@ -670,6 +679,7 @@
 		F1C666441A849FD900389838 = {
 			isa = PBXGroup;
 			children = (
+				CA0973C61B1E6D75003E10F5 /* gimbalsdk_2.14_ios */,
 				F1C6664F1A849FD900389838 /* dataSnapSample */,
 				F1C6666C1A849FD900389838 /* dataSnapSampleTests */,
 				3921B4601B0E9C6E00E976C0 /* DSIOClient-1.0.2 */,
@@ -691,6 +701,8 @@
 		F1C6664F1A849FD900389838 /* dataSnapSample */ = {
 			isa = PBXGroup;
 			children = (
+				CA0973CA1B1E6F74003E10F5 /* GimbalAdapter.h */,
+				CA0973CB1B1E6F74003E10F5 /* GimbalAdapter.m */,
 				F1C6667A1A84A0EA00389838 /* ViewController.h */,
 				F1C6667B1A84A0EA00389838 /* ViewController.m */,
 				F1C666541A849FD900389838 /* AppDelegate.h */,
@@ -747,6 +759,8 @@
 		F2B0AA13EE21C735CAD7B80D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA0973C81B1E6D7E003E10F5 /* Gimbal.framework */,
+				CA0973C31B1E6D48003E10F5 /* Gimbal.framework */,
 				39B9AC3B1B0FA33000FDE194 /* AudioToolbox.framework */,
 				39B9AC3C1B0FA33000FDE194 /* CoreLocation.framework */,
 				39B9AC3D1B0FA33000FDE194 /* CoreTelephony.framework */,
@@ -879,6 +893,7 @@
 				39B9AC141B0FA27800FDE194 /* UAInboxUI.strings in Resources */,
 				39B9AC191B0FA27800FDE194 /* UAInboxMessageViewController.xib in Resources */,
 				39B9AC281B0FA27800FDE194 /* UAPushMoreSettingsView.xib in Resources */,
+				CA0973C71B1E6D75003E10F5 /* gimbalsdk_2.14_ios in Resources */,
 				39B9AC271B0FA27800FDE194 /* UAMapPresentationViewController.xib in Resources */,
 				F2B0A6DF46D098D2D6BE8335 /* UserContext.plist in Resources */,
 				39B9AC161B0FA27800FDE194 /* list-image-placeholder@2x.png in Resources */,
@@ -906,6 +921,7 @@
 				39B9AC4D1B151B9300FDE194 /* UserIDStore.m in Sources */,
 				F1C666561A849FD900389838 /* AppDelegate.m in Sources */,
 				F1C666531A849FD900389838 /* main.m in Sources */,
+				CA0973CC1B1E6F74003E10F5 /* GimbalAdapter.m in Sources */,
 				F1C666981A84A0EA00389838 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,9 +1090,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Airship",
+					/Users/ryanwmedlin/Downloads/gimbalsdk_2.14_ios/Frameworks,
+					"$(PROJECT_DIR)/gimbalsdk_2.14_ios/Frameworks",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1101,10 +1119,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Airship",
+					/Users/ryanwmedlin/Downloads/gimbalsdk_2.14_ios/Frameworks,
+					"$(PROJECT_DIR)/gimbalsdk_2.14_ios/Frameworks",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
 				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
