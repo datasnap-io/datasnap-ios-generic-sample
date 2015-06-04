@@ -3,7 +3,7 @@ DataSnapClient
 
 A Vendor neutral iOS Sample app and SDK for [DataSnap.io](http://datasnap.io)
 
-Using: https://github.com/datasnap-io/datasnap-ios-sdk/blob/master/releases/1.0.2/DSIOClient-1.0.2.zip
+Using: https://github.com/datasnap-io/datasnap-ios-sdk/releases/download/1.0.4/Datasnap.framework-1.0.4.zip
 
 ## Running Instructions
 
