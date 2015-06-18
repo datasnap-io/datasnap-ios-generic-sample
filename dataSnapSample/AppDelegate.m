@@ -6,7 +6,7 @@
 
 #import <AdSupport/ASIdentifierManager.h>
 
-#import "DSIOClient.h"
+#import <Datasnap/DSIOClient.h>
 
 #import "GimbalAdapter.h"
 
@@ -18,12 +18,12 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [DSIOClient setupWithOrgID:@"2qM5ckFqzFCcCIdY7xYhBc"
-                     projectId:@"TestApplication2"
-                        APIKey:@"5Z0TKJ8GLZOR40IU4CBOEH78B"
-                     APISecret:@"PDGIbwW25CbUkRSIp/OOB+WniDDudG/Pu+jfjzAEfwQ"
+    [DSIOClient setupWithOrgID:@"slUzRDomQGWOAl2fmvfoS"
+                     projectId:@"DatasnapUrbanAirShipTestiOS"
+                        APIKey:@"1EM53HT8597CC7Q5QP0U8DN73"
+                     APISecret:@"CcduyakRsZ8AQ/HLdXER2EjsCOlf29CTFVk/BctFmQM"
                        logging:true
-                      eventNum:1];
+                      eventNum:50];
     
 
     
@@ -62,13 +62,17 @@
     return YES;
     }
 
+
+
+
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_sent",
                                                            @"communication": @{@"identifier":@"",
                                                                                @"description":@""},
                                                            @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]}},
-                                                           @"datasnap": @{@"created": currentDate()}}];
+                                                           @"datasnap": @{@"created": currentDate()}
+                                                           }];
     [[DSIOClient sharedClient] genericEvent:eventData];
     
 }
@@ -98,9 +102,9 @@
 - (void)didRecieveNotification:(NSDictionary *)notification {
     
     
-    NSMutableDictionary *tempDic = [[notification objectForKey:@"aps"] objectForKey:@"alert"];
-    NSString *title = [tempDic objectForKey:@"title"];
+    NSString *title = [[notification objectForKey:@"aps"] objectForKey:@"alert"];
     
+
     
     // campaign and communication have the same identifiers here since there is no concept of a campaign having multiple communications/creatives.
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
@@ -111,9 +115,9 @@
                                                            @"campaign": @{@"identifier":[notification objectForKey:@"_"],
                                                                                @"name":title,
                                                                                @"description":title},
-                                                           @"user": @{@"id": @{@"global_distinct_id": [[UserIDStore sharedInstance] adversiterID]},
-                                                                      @"tags": [UAirship push].tags},
-                                                           @"datasnap": @{@"created": currentDate()}}];
+                                                           @"user": @{@"id": @{@"global_distinct_id": [Gimbal applicationInstanceIdentifier]}},
+                                                           @"datasnap": @{@"created": currentDate()}
+                                                           }];
     [[DSIOClient sharedClient] genericEvent:eventData];
     
     NSLog(@"local notification and application is active");
@@ -209,19 +213,9 @@
 - (void)receivedForegroundNotification:(NSDictionary *)notification {
     NSLog(@"receivedForegroundNotification: %@", notification);
     
-    NSString *tag = [notification objectForKey:@"^+t"];
-    
-    if(![tag  isEqual: @"DS_ABTest"]){
-        NSLog(@"tag NOT found: DS_ABTest" );
-        [self didRecieveNotification:notification];
-    
-    }else{
-        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
-       // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
-        
-    }
+    [self didRecieveNotification:notification];
+ 
 }
-
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     UA_LTRACE(@"Application registered for remote notifications with device token: %@", deviceToken);
@@ -238,47 +232,19 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    UA_LINFO(@"Application received remote notification no handler: %@", userInfo);
+    UA_LINFO(@"Application received remote notification: %@", userInfo);
     [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState];
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    UA_LINFO(@"Application received remote notification fetchCompletionHandler: %@", userInfo);
+    UA_LINFO(@"Application received remote notification: %@", userInfo);
     [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
-    
-    
-    
-//    NSString *tag = [userInfo objectForKey:@"DS_LIFT"];
-//    
-//    if(![tag  isEqual: @"OFF"]){
-//        NSLog(@"DS_LIFT OFF" );
-//        [self didRecieveNotification:userInfo];
-//        
-//    }else{
-//         NSLog(@"tag FOUND PROCESSING A/B: DS_LIFT ON" );
-//        //put code here to segment users into two groups equally, one to send the event and one to not send the events ang log
-//        // events accordingly:  ds_communication_not_sent  ds_communication_not_sent
-//        
-//        
-//        
-//        
-//    }
-    
-    
-    
-    
-    
-    
-    completionHandler(UIBackgroundFetchResultNoData);
-    
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())handler {
     UA_LINFO(@"Received remote notification button interaction: %@ notification: %@", identifier, userInfo);
     [[UAirship push] appReceivedActionWithIdentifier:identifier notification:userInfo applicationState:application.applicationState completionHandler:handler];
 }
-
-
 
 
 

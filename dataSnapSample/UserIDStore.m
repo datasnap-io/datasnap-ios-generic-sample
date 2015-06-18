@@ -4,13 +4,7 @@
 
 #import "UserIDStore.h"
 
-NSString *currentDate() {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
-    NSDate *date = [NSDate new];
-    NSString *formattedDateString = [dateFormatter stringFromDate:date];
-    return formattedDateString;
-}
+
 
 @implementation UserIDStore
 

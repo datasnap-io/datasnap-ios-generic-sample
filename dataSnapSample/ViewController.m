@@ -3,7 +3,7 @@
 //
 
 #import "ViewController.h"
-#import "DSIOClient.h"
+#import <Datasnap/DSIOClient.h>
 #import "UserIDStore.h"
 
 // Unique user ID
@@ -38,11 +38,7 @@ static NSString *global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
 - (void)callEvents {
     
     [self exampleBeaconArrive];
-    [self exampleBeaconSighting];
-    [self exampleBeaconDepart];
-    [self exampleGeofenceArrive];
-    [self exampleGeofenceDepart];
-    [self exampleGPSSighting];
+
 }
 
 /**

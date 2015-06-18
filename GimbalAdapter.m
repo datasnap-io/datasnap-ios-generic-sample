@@ -7,6 +7,7 @@
 #import "UAirship.h"
 #import "UARegionEvent.h"
 #import "UAAnalytics.h"
+#import <Datasnap/DSIOClient.h>
 
 #define kSource @"Gimbal"
 
@@ -36,6 +37,14 @@
     }
 
     return self;
+}
+
+NSString *currentDate() {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    NSDate *date = [NSDate new];
+    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    return formattedDateString;
 }
 
 - (void)dealloc {
@@ -107,20 +116,43 @@
 
 - (void)placeManager:(GMBLPlaceManager *)manager didBeginVisit:(GMBLVisit *)visit {
     UA_LDEBUG(@"Entered a Gimbal Place: %@ on the following date: %@", visit.place.name, visit.arrivalDate);
-
+    //add datasnap event here
+    
+    
     [self reportPlaceEventToAnalytics:visit.place boundaryEvent:UABoundaryEventEnter];
 }
 
 - (void)placeManager:(GMBLPlaceManager *)manager didEndVisit:(GMBLVisit *)visit {
     UA_LDEBUG(@"Exited a Gimbal Place: %@ Entrance date:%@ Exit Date:%@", visit.place.name, visit.arrivalDate, visit.departureDate);
 
+    //add datasnap event here
+    
+    
     [self reportPlaceEventToAnalytics:visit.place boundaryEvent:UABoundaryEventExit];
 }
+
+
+/*
+ For global_distinct_id is beter ot use something that you can share with urban airship as well like the urban airship device ID?
+ */
 
 - (void)beaconManager:(GMBLBeaconManager *)manager didReceiveBeaconSighting:(GMBLBeaconSighting *)sighting
 {
     //This will be invoked when a user sights a beacon
-     //UA_LDEBUG(@"Beacon sighting: %@", sighting);
+    //UA_LDEBUG(@"Beacon sighting: %@", sighting);
+    
+    NSString *rssi = [NSString stringWithFormat:@"%d", (int)sighting.RSSI];
+    NSDictionary *eventData = @{@"event_type" : @"beacon_sighting",
+                                 @"beacon" : @{@"identifier": sighting.beacon.identifier,
+                                               @"rssi" : rssi},
+                                 @"user": @{@"id": @{@"global_distinct_id": [Gimbal applicationInstanceIdentifier]}},
+                                 @"datasnap": @{@"created": currentDate()}
+                                };
+                                                           
+    
+    [[DSIOClient sharedClient] genericEvent:eventData];
+    
+    
 }
 
 
