@@ -23,7 +23,7 @@
                         APIKey:@"1EM53HT8597CC7Q5QP0U8DN73"
                      APISecret:@"CcduyakRsZ8AQ/HLdXER2EjsCOlf29CTFVk/BctFmQM"
                        logging:true
-                      eventNum:50];
+                      eventNum:25];
     
 
     
@@ -263,6 +263,12 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     UA_LINFO(@"Application received remote notification: %@", userInfo);
+    
+    
+
+    
+    
+    
     [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState];
 }
 
@@ -270,13 +276,14 @@
 /*
  ths will get called when they click on the background push notification too so you can detect this and throw a click event.
  
+ there are alot of different flows through these events depending if the application is in the background or foreground.
+ 
  */
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
     UA_LINFO(@"Application received remote notification: %@", userInfo);
     UIApplicationState state = [application applicationState];
-    if (state == UIApplicationStateActive) {
-        [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
-    }else{
+    if (state == UIApplicationStateInactive) {
         NSString *title =  [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
         
         
@@ -293,11 +300,45 @@
                                                                @"datasnap": @{@"created": currentDate()}
                                                                }];
         [[DSIOClient sharedClient] genericEvent:eventData];
+        [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
+    }else{
+        NSString *title =  [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+        
+        
+        // campaign and communication have the same identifiers here since there is no concept of a campaign having multiple communications/creatives.
+        NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                          initWithDictionary:@{@"event_type": @"ds_communication_sent",
+                                                               @"communication": @{@"identifier":[userInfo objectForKey:@"_"],
+                                                                                   @"name":title,
+                                                                                   @"description":title},
+                                                               @"campaign": @{@"identifier":[userInfo objectForKey:@"_"],
+                                                                              @"name":title,
+                                                                              @"description":title},
+                                                               @"user": @{@"id": @{@"global_distinct_id": [Gimbal applicationInstanceIdentifier]}},
+                                                               @"datasnap": @{@"created": currentDate()}
+                                                               }];
+        [[DSIOClient sharedClient] genericEvent:eventData];
     }
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())handler {
     UA_LINFO(@"Received remote notification button interaction: %@ notification: %@", identifier, userInfo);
+    NSString *title =  [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    
+    
+    // campaign and communication have the same identifiers here since there is no concept of a campaign having multiple communications/creatives.
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                      initWithDictionary:@{@"event_type": @"ds_communication_open",
+                                                           @"communication": @{@"identifier":[userInfo objectForKey:@"_"],
+                                                                               @"name":title,
+                                                                               @"description":title},
+                                                           @"campaign": @{@"identifier":[userInfo objectForKey:@"_"],
+                                                                          @"name":title,
+                                                                          @"description":title},
+                                                           @"user": @{@"id": @{@"global_distinct_id": [Gimbal applicationInstanceIdentifier]}},
+                                                           @"datasnap": @{@"created": currentDate()}
+                                                           }];
+    [[DSIOClient sharedClient] genericEvent:eventData];
     [[UAirship push] appReceivedActionWithIdentifier:identifier notification:userInfo applicationState:application.applicationState completionHandler:handler];
 }
 
