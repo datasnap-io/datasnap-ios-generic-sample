@@ -101,11 +101,41 @@
 
 - (void)didRecieveNotification:(NSDictionary *)notification {
     
+    /*
     
-    NSString *title = [[notification objectForKey:@"aps"] objectForKey:@"alert"];
+    Note the format of the message changes depending on the type of push notification so need ot build some checks in here or you will
+    get runtime errors.
+    
+    if content available flag is set its:
+     
+     151] Application is configured with background remote notifications.PushNotificationDelegate should implement receivedForegroundNotification:fetchCompletionHandler: instead of receivedForegroundNotification:.receivedForegroundNotification: will still be called.
+     2015-06-20 13:52:22.394 dataSnapSample[305:34773] receivedForegroundNotification: {
+     "^u" = "http://www.datasnap.io";
+     "_" = NqXSaBeOEeWFkZDiuiE7MA;
+     aps =     {
+     alert =         {
+     body = "ryan test";
+     title = e;
+     };
+     "content-available" = 1;
+     };
+     e = e;
+     }
+     
+     NSMutableDictionary *alerts = [[notification objectForKey:@"aps"] objectForKey:@"alert"];
+     NSString *title = [alerts objectForKey:@"msg"];
     
 
+    if not then the message is in the root of the "alert" property.
+     NSMutableDictionary *alerts = [[notification objectForKey:@"aps"] objectForKey:@"alert"];
+     NSString *title = [alerts objectForKey:@"body"];
+     
+     
+  
+     */
+    NSString *title =  [[notification objectForKey:@"aps"] objectForKey:@"alert"];
     
+
     // campaign and communication have the same identifiers here since there is no concept of a campaign having multiple communications/creatives.
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_sent",
@@ -236,9 +266,34 @@
     [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState];
 }
 
+
+/*
+ ths will get called when they click on the background push notification too so you can detect this and throw a click event.
+ 
+ */
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     UA_LINFO(@"Application received remote notification: %@", userInfo);
-    [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        [[UAirship push] appReceivedRemoteNotification:userInfo applicationState:application.applicationState fetchCompletionHandler:completionHandler];
+    }else{
+        NSString *title =  [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+        
+        
+        // campaign and communication have the same identifiers here since there is no concept of a campaign having multiple communications/creatives.
+        NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
+                                          initWithDictionary:@{@"event_type": @"ds_communication_open",
+                                                               @"communication": @{@"identifier":[userInfo objectForKey:@"_"],
+                                                                                   @"name":title,
+                                                                                   @"description":title},
+                                                               @"campaign": @{@"identifier":[userInfo objectForKey:@"_"],
+                                                                              @"name":title,
+                                                                              @"description":title},
+                                                               @"user": @{@"id": @{@"global_distinct_id": [Gimbal applicationInstanceIdentifier]}},
+                                                               @"datasnap": @{@"created": currentDate()}
+                                                               }];
+        [[DSIOClient sharedClient] genericEvent:eventData];
+    }
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())handler {
