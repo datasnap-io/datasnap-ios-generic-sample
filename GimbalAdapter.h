@@ -1,5 +1,11 @@
 /*
  * Copyright 2015 Urban Airship and Contributors
+  Please note Datasnap.io has made modifications to the original classes.
+ 
+ Copy of the original license can be viewed here:
+ 
+ https://github.com/urbanairship/ua-extensions/blob/master/COPYING
+ 
  */
 
 #import <Foundation/Foundation.h>
