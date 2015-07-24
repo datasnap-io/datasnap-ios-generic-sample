@@ -193,6 +193,7 @@
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_not_sent",
                                                            @"communication": @{@"identifier":[notification objectForKey:@"_"],
+                                                                               @"status":@"foreground",
                                                                                @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
                                                            @"campaign": @{@"identifier":[notification objectForKey:@"_"],
                                                                           @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
@@ -211,6 +212,7 @@
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_open",
                                                            @"communication": @{@"identifier":[notification objectForKey:@"_"],
+                                                                               @"status":@"foreground",
                                                                                @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
                                                            @"campaign": @{@"identifier":[notification objectForKey:@"_"],
                                                                           @"description":[[notification objectForKey:@"aps"] objectForKey:@"alert"]},
@@ -292,6 +294,7 @@
                                           initWithDictionary:@{@"event_type": @"ds_communication_open",
                                                                @"communication": @{@"identifier":[userInfo objectForKey:@"_"],
                                                                                    @"name":title,
+                                                                                   @"status":@"foreground",
                                                                                    @"description":title},
                                                                @"campaign": @{@"identifier":[userInfo objectForKey:@"_"],
                                                                               @"name":title,
@@ -310,6 +313,7 @@
                                           initWithDictionary:@{@"event_type": @"ds_communication_sent",
                                                                @"communication": @{@"identifier":[userInfo objectForKey:@"_"],
                                                                                    @"name":title,
+                                                                                   @"status":@"foreground",
                                                                                    @"description":title},
                                                                @"campaign": @{@"identifier":[userInfo objectForKey:@"_"],
                                                                               @"name":title,
@@ -323,14 +327,14 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())handler {
     UA_LINFO(@"Received remote notification button interaction: %@ notification: %@", identifier, userInfo);
-    NSString *title =  [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    
-    
+    NSMutableDictionary *alerts = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    NSString *title = [alerts objectForKey:@"body"];
     // campaign and communication have the same identifiers here since there is no concept of a campaign having multiple communications/creatives.
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc]
                                       initWithDictionary:@{@"event_type": @"ds_communication_open",
                                                            @"communication": @{@"identifier":[userInfo objectForKey:@"_"],
                                                                                @"name":title,
+                                                                               @"status":@"foreground",
                                                                                @"description":title},
                                                            @"campaign": @{@"identifier":[userInfo objectForKey:@"_"],
                                                                           @"name":title,
@@ -338,7 +342,7 @@
                                                            @"user": @{@"id": @{@"global_distinct_id": [Gimbal applicationInstanceIdentifier]}},
                                                            @"datasnap": @{@"created": currentDate()}
                                                            }];
-    [[DSIOClient sharedClient] genericEvent:eventData];
+    //[[DSIOClient sharedClient] genericEvent:eventData];
     [[UAirship push] appReceivedActionWithIdentifier:identifier notification:userInfo applicationState:application.applicationState completionHandler:handler];
 }
 
