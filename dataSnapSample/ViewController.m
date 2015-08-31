@@ -3,7 +3,7 @@
 //
 
 #import "ViewController.h"
-#import "DSIOClient.h"
+#import <Datasnap/DSIOClient.h>
 
 // Unique user ID
 static NSString *global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
@@ -79,7 +79,7 @@ NSString *currentDate() {
 }
 
 /**
- * Example of a beacon arrival
+ * Example of a beacon depart
  */
 - (void)exampleBeaconDepart {
     NSDictionary *beaconData = @{@"event_type" : @"beacon_depart",
@@ -105,7 +105,7 @@ NSString *currentDate() {
 }
 
 /**
- * Example of a geofence arrival
+ * Example of a geofence depart
  */
 - (void)exampleGeofenceDepart {
     NSDictionary *beaconData = @{@"event_type" : @"geofence_depart",
@@ -118,7 +118,7 @@ NSString *currentDate() {
 }
 
 /**
- * Example of a geofence arrival
+ * Example of a GPS based sighting 
  */
 - (void)exampleGPSSighting {
     NSDictionary *beaconData = @{@"event_type" : @"global_position_sighting",
