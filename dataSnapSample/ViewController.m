@@ -4,6 +4,7 @@
 
 #import "ViewController.h"
 #import <Datasnap/DSIOClient.h>
+#import <Gimbal/Gimbal.h>
 
 // Unique user ID
 static NSString *global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
@@ -16,8 +17,10 @@ NSString *currentDate() {
     return formattedDateString;
 }
 
-@interface ViewController ()
-
+@interface ViewController () <GMBLPlaceManagerDelegate, GMBLCommunicationManagerDelegate, GMBLBeaconManagerDelegate>
+@property (nonatomic) GMBLPlaceManager *placeManager;
+@property (nonatomic) GMBLCommunicationManager *communicationManager;
+@property (nonatomic) GMBLBeaconManager *beaconManager;
 @end
 
 @implementation ViewController
@@ -34,6 +37,19 @@ NSString *currentDate() {
                                    selector:@selector(callEvents)
                                    userInfo:nil
                                     repeats:YES];
+    
+    // Do any additional setup after loading the view, typically from a nib.
+    self.placeManager = [GMBLPlaceManager new];
+    self.placeManager.delegate = self;
+    [GMBLPlaceManager startMonitoring];
+    
+    self.communicationManager = [GMBLCommunicationManager new];
+    self.communicationManager.delegate = self;
+    [GMBLCommunicationManager startReceivingCommunications];
+    
+    self.beaconManager = [GMBLBeaconManager new];
+    self.beaconManager.delegate = self;
+    [self.beaconManager startListening];
 }
 
 - (void)logToDeviceAndConsole:(NSString *)eventName{
@@ -61,8 +77,8 @@ NSString *currentDate() {
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
-    [self logToDeviceAndConsole:@"Datasnap Example Beacon Sighting Event"];
+    //[[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    //[self logToDeviceAndConsole:@"Datasnap Example Beacon Sighting Event"];
 }
 
 /**
@@ -74,8 +90,8 @@ NSString *currentDate() {
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
-    [self logToDeviceAndConsole:@"Datasnap Example Beacon Arrival Event"];
+    //[[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    //[self logToDeviceAndConsole:@"Datasnap Example Beacon Arrival Event"];
 }
 
 /**
@@ -87,8 +103,8 @@ NSString *currentDate() {
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
-    [self logToDeviceAndConsole:@"Datasnap Example Beacon Departure Event"];
+   // [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    //[self logToDeviceAndConsole:@"Datasnap Example Beacon Departure Event"];
 }
 
 /**
@@ -100,8 +116,8 @@ NSString *currentDate() {
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
-    [self logToDeviceAndConsole:@"Datasnap Example Geofence Arrival Event"];
+   // [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    //[self logToDeviceAndConsole:@"Datasnap Example Geofence Arrival Event"];
 }
 
 /**
@@ -113,8 +129,8 @@ NSString *currentDate() {
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
-    [self logToDeviceAndConsole:@"Datasnap Example Geofence Departure Event"];
+   // [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+   //[self logToDeviceAndConsole:@"Datasnap Example Geofence Departure Event"];
 }
 
 /**
@@ -126,8 +142,34 @@ NSString *currentDate() {
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
-    [self logToDeviceAndConsole:@"Datasnap Example GPS Sighting Event"];
+   // [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)beaconData];
+    //[self logToDeviceAndConsole:@"Datasnap Example GPS Sighting Event"];
+}
+
+
+/*
+ For global_distinct_id is beter ot use something that you can share with urban airship as well like the urban airship device ID?
+ */
+
+- (void)beaconManager:(GMBLBeaconManager *)manager didReceiveBeaconSighting:(GMBLBeaconSighting *)sighting
+{
+    //This will be invoked when a user sights a beacon
+    //UA_LDEBUG(@"Beacon sighting: %@", sighting);
+    
+    NSString *rssi = [NSString stringWithFormat:@"%d", (int)sighting.RSSI];
+    NSDictionary *eventData = @{@"event_type" : @"beacon_sighting",
+                                @"venue_org_id" : @"6l7W4PFYS5Yl1NoLpiGiRP",
+                                @"beacon" : @{@"identifier": sighting.beacon.identifier,
+                                              @"rssi" : rssi},
+                                @"user": @{@"id": @{@"global_distinct_id": [Gimbal applicationInstanceIdentifier]}},
+                                @"datasnap": @{@"created": currentDate()}
+                                };
+    [self logToDeviceAndConsole:@"Logging Sighting::::::::::::::::::::::::::::"];
+    [self logToDeviceAndConsole:eventData];
+    
+    [[DSIOClient sharedClient] genericEvent:eventData];
+    
+    
 }
 
 

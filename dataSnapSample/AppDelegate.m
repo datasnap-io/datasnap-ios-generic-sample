@@ -4,16 +4,23 @@
 
 #import "AppDelegate.h"
 #import <Datasnap/DSIOClient.h>
+#import <Gimbal/Gimbal.h>
+
+
 
 @implementation AppDelegate
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [DSIOClient setupWithOrgID:@"2qM5ckFqzFCcCIdY7xYhBc"
-                     projectId:@"TestApplication2"
-                        APIKey:@"5Z0TKJ8GLZOR40IU4CBOEH78B"
-                     APISecret:@"PDGIbwW25CbUkRSIp/OOB+WniDDudG/Pu+jfjzAEfwQ"
+    [DSIOClient setupWithOrgID:@"3R3ToYxWYIDMCZKGR17WjS"
+                     projectId:@"NeustarDemoAppgYRMz3JKgjNUE9"
+                        APIKey:@"6DQB2WMGSDCYDW88Y3N9PR17B"
+                     APISecret:@"dabxyDfTwc/7pvh57GNgpRjn2reZKb/A8kmfxs7axd8"
                        logging:true
-                      eventNum:15];
+                      eventNum:35];
+    
+    [Gimbal setAPIKey:@"76d28539-8e75-493e-bbc6-d9bde7857cb9" options:nil];
+    
 
     return YES;
     }
@@ -42,5 +49,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
 
 @end
