@@ -9,3 +9,10 @@ Using: https://github.com/datasnap-io/datasnap-ios-sdk/releases/download/1.0.4/D
 
 git clone this repository and open this project in xcode and run it in the simulator or against a device. 
 
+
+## iOS SDK Project
+
+The project is located here to the SDK and documentation on how to integrate:
+
+https://github.com/datasnap-io/datasnap-ios-sdk
+
