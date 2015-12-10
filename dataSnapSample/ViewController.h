@@ -7,8 +7,6 @@
 @interface ViewController : UIViewController
 @property IBOutlet UITextField *deviceDisplay;
 
-@property(strong, nonatomic) IBOutlet UITextField *GarsTextField;
-
 @end
 
-#define DeviceLog(message, ...) self.deviceDisplay.text = [self.deviceDisplay.text stringByAppendingString:[NSString stringWithFormat:message, ##__VA_ARGS__]]
+#define DeviceLog(message, ...) self.deviceDisplay.text = [[NSString stringWithFormat:message, ##__VA_ARGS__] stringByAppendingString:self.deviceDisplay.text]

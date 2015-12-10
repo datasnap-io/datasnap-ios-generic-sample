@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA5685F21C19088700AA8C6F /* DSIOClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5685F11C19088700AA8C6F /* DSIOClient.framework */; };
+		AAAF55E61C1A4615005181AD /* DSIOClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAF55E51C1A4615005181AD /* DSIOClient.framework */; };
+		AAAF55E81C1A4660005181AD /* DSIOClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AAAF55E51C1A4615005181AD /* DSIOClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAE4C7DD1C19099200E66647 /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE4C7DC1C19099200E66647 /* Gimbal.framework */; };
-		AAE4C7DE1C190A0C00E66647 /* DSIOClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA5685F11C19088700AA8C6F /* DSIOClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA002EBA1BEAD6AF0059FE8B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CA002EB91BEAD6AF0059FE8B /* libz.tbd */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
@@ -39,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AAE4C7DE1C190A0C00E66647 /* DSIOClient.framework in Embed Frameworks */,
+				AAAF55E81C1A4660005181AD /* DSIOClient.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,11 +47,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		154825111B1B8DFC004E5CBF /* Datasnap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Datasnap.framework; path = "../../datasnap-ios-sdk/build/Datasnap.framework"; sourceTree = "<group>"; };
-		AA5685F11C19088700AA8C6F /* DSIOClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DSIOClient.framework; sourceTree = "<group>"; };
+		AAAF55E51C1A4615005181AD /* DSIOClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DSIOClient.framework; sourceTree = "<group>"; };
 		AAE4C7DC1C19099200E66647 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gimbal.framework; sourceTree = "<group>"; };
 		CA002EB91BEAD6AF0059FE8B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1C6664D1A849FD900389838 /* Beacon Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beacon Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F1C666551A849FD900389838 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,8 +75,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA002EBA1BEAD6AF0059FE8B /* libz.tbd in Frameworks */,
-				AA5685F21C19088700AA8C6F /* DSIOClient.framework in Frameworks */,
 				AAE4C7DD1C19099200E66647 /* Gimbal.framework in Frameworks */,
+				AAAF55E61C1A4615005181AD /* DSIOClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +103,7 @@
 		F1C6664E1A849FD900389838 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1C6664D1A849FD900389838 /* dataSnapSample.app */,
+				F1C6664D1A849FD900389838 /* Beacon Test.app */,
 				F1C666691A849FD900389838 /* dataSnapSampleTests.xctest */,
 			);
 			name = Products;
@@ -126,7 +125,6 @@
 		F1C666501A849FD900389838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				154825111B1B8DFC004E5CBF /* Datasnap.framework */,
 				F1C666521A849FD900389838 /* main.m */,
 				F2B0A29D907F4620EFD28979 /* Base.lproj */,
 				F2B0ABA92FB77FC92DBF18F8 /* en.lproj */,
@@ -168,8 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				CA002EB91BEAD6AF0059FE8B /* libz.tbd */,
+				AAAF55E51C1A4615005181AD /* DSIOClient.framework */,
 				AAE4C7DC1C19099200E66647 /* Gimbal.framework */,
-				AA5685F11C19088700AA8C6F /* DSIOClient.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -200,7 +198,7 @@
 			);
 			name = dataSnapSample;
 			productName = dataSnapSample;
-			productReference = F1C6664D1A849FD900389838 /* dataSnapSample.app */;
+			productReference = F1C6664D1A849FD900389838 /* Beacon Test.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F1C666681A849FD900389838 /* dataSnapSampleTests */ = {
@@ -373,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -409,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -420,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BITCODE_GENERATION_MODE = bitcode;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -428,16 +427,17 @@
 					"/Users/nbrown/Dropbox/Projects/datasnap.io/Generic/datasnap-ios-sdk/build",
 					"$(PROJECT_DIR)/gimbalsdk_2.25.1_ios/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/datasnap-ios-sdk",
 					"$(PROJECT_DIR)/DSIOClient-1.0.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Datasnap.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Datasnap.dataSnapSample;
+				PRODUCT_NAME = "Beacon Test";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -448,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BITCODE_GENERATION_MODE = bitcode;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -456,17 +457,18 @@
 					"/Users/nbrown/Dropbox/Projects/datasnap.io/Generic/datasnap-ios-sdk/build",
 					"$(PROJECT_DIR)/gimbalsdk_2.25.1_ios/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
 				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/dataSnapSample/dataSnapSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/datasnap-ios-sdk",
 					"$(PROJECT_DIR)/DSIOClient-1.0.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Datasnap.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Datasnap.dataSnapSample;
+				PRODUCT_NAME = "Beacon Test";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

@@ -3,7 +3,7 @@
 //
 
 #import "ViewController.h"
-#import <Datasnap/DSIOClient.h>
+#import <DSIOClient/DSIOClient.h>
 #import <Gimbal/Gimbal.h>
 
 // Unique user ID
@@ -169,9 +169,7 @@ NSString *currentDate() {
     
     [[DSIOClient sharedClient] genericEvent:eventData];
     
-    
 }
-
 
 @end
 

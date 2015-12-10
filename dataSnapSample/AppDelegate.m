@@ -3,13 +3,10 @@
 //  Datasnap Generic Sample
 
 #import "AppDelegate.h"
-#import <Datasnap/DSIOClient.h>
+#import <DSIOClient/DSIOClient.h>
 #import <Gimbal/Gimbal.h>
 
-
-
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DSIOClient setupWithOrgID:@"3R3ToYxWYIDMCZKGR17WjS"
@@ -21,7 +18,6 @@
     
     [Gimbal setAPIKey:@"76d28539-8e75-493e-bbc6-d9bde7857cb9" options:nil];
     
-
     return YES;
     }
 
