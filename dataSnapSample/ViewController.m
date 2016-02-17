@@ -57,7 +57,8 @@ NSString *currentDate() {
  */
 - (void)exampleBeaconSighting {
     NSDictionary *beaconData = @{@"event_type" : @"beacon_sighting",
-                                 @"beacon" : @{@"identifier": @"3333333"},
+                                 @"beacon" : @{@"identifier": @"3333333",
+                                                @"rssi": -20},
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
@@ -70,7 +71,8 @@ NSString *currentDate() {
  */
 - (void)exampleBeaconArrive {
     NSDictionary *beaconData = @{@"event_type" : @"beacon_arrive",
-                                 @"beacon" : @{@"identifier": @"3333333"},
+                                 @"beacon" : @{@"identifier": @"3333333",
+                                                @"rssi": -40},
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
@@ -83,7 +85,8 @@ NSString *currentDate() {
  */
 - (void)exampleBeaconDepart {
     NSDictionary *beaconData = @{@"event_type" : @"beacon_depart",
-                                 @"beacon" : @{@"identifier": @"3333333"},
+                                 @"beacon" : @{@"identifier": @"3333333",
+                                                @"rssi": -50},
                                  @"user": @{@"id": @{@"global_distinct_id": global_distinct_id}},
                                  @"datasnap": @{@"created": currentDate()}};
     
