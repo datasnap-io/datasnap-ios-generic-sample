@@ -10,9 +10,6 @@
 static NSString *global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
 static NSString *mobile_device_ios_idfa;
 
-//"mobile_device_ios_idfa": "AEBE52E7-03EE-455A-B3C4-E57283966239",
-//"mobile_device_ios_openidfa": "09238dd4",
-
 
 NSString *currentDate() {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -182,5 +179,3 @@ NSString *currentDate() {
 }
 
 @end
-
-
