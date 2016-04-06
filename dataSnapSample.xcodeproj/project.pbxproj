@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		154825121B1B8DFC004E5CBF /* Datasnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154825111B1B8DFC004E5CBF /* Datasnap.framework */; };
-		43BF3E411C6BFE240041CC6B /* datasnap-ios-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 43BF3E401C6BFE240041CC6B /* datasnap-ios-sdk */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
 		F1C6665F1A849FD900389838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6665D1A849FD900389838 /* Main.storyboard */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		154825111B1B8DFC004E5CBF /* Datasnap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Datasnap.framework; path = "../../datasnap-ios-sdk/build/Datasnap.framework"; sourceTree = "<group>"; };
-		43BF3E401C6BFE240041CC6B /* datasnap-ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "datasnap-ios-sdk"; sourceTree = "<group>"; };
 		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 		F1C666441A849FD900389838 = {
 			isa = PBXGroup;
 			children = (
-				43BF3E401C6BFE240041CC6B /* datasnap-ios-sdk */,
 				F1C6664F1A849FD900389838 /* dataSnapSample */,
 				F1C6666C1A849FD900389838 /* dataSnapSampleTests */,
 				F1C6664E1A849FD900389838 /* Products */,
@@ -261,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C6665F1A849FD900389838 /* Main.storyboard in Resources */,
-				43BF3E411C6BFE240041CC6B /* datasnap-ios-sdk in Resources */,
 				F2B0A5EC800668D435484C35 /* Main.storyboard in Resources */,
 				F2B0AA179FDB576CDF188DDA /* InfoPlist.strings in Resources */,
 				F2B0A168D5EBE2254B22DAAD /* Images.xcassets in Resources */,

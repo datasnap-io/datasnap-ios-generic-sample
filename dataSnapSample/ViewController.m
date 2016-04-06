@@ -65,6 +65,7 @@ NSString *currentDate() {
     [self exampleGeofenceArrive];
     [self exampleGeofenceDepart];
     [self exampleGPSSighting];
+    [self exampleCampaignEvent];
 }
 
 /**
@@ -160,6 +161,25 @@ NSString *currentDate() {
     [self logToDeviceAndConsole:@"Datasnap Example GPS Sighting Event"];
 }
 
+/*
+ * Example of campaign communication report
+ */
+- (void)exampleCampaignEvent {
+    NSDictionary *event = @{@"event_type" : @"ds_communication_sent",
+                            @"campaign" : @{@"identifier": @"3333333",
+                                            @"advertiser_org_id": @"advorgid",
+                                            @"status": @"background",
+                                            @"project_id":@"projectId"},
+                            @"communication" : @{@"identifier": @"3333333",
+                                                 @"advertiser_org_id": @"advorgid"},
+                            @"user": @{@"id": @{@"global_distinct_id": global_distinct_id,
+                                                @"mobile_device_ios_idfa": mobile_device_ios_idfa}
+                                       },
+                            @"datasnap": @{@"created": currentDate()}};
+    
+    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary *)event];
+    [self logToDeviceAndConsole:@"Datasnap Example Campaign Communication Event"];
+}
 
 @end
 
