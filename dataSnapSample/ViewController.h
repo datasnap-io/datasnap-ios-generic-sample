@@ -5,9 +5,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-@property IBOutlet UITextField *deviceDisplay;
-
-@property(strong, nonatomic) IBOutlet UITextField *GarsTextField;
+@property (weak, nonatomic) IBOutlet UIButton *beaconSightingButton;
+@property (weak, nonatomic) IBOutlet UIButton *beaconArrivalButton;
+@property (weak, nonatomic) IBOutlet UIButton *beaconDepartButton;
+@property (weak, nonatomic) IBOutlet UIButton *geofenceDepartButton;
+@property (weak, nonatomic) IBOutlet UIButton *campaignEventButton;
+@property (weak, nonatomic) IBOutlet UILabel *successLabel;
 
 @end
 

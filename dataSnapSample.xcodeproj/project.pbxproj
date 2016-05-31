@@ -7,7 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		154825121B1B8DFC004E5CBF /* Datasnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154825111B1B8DFC004E5CBF /* Datasnap.framework */; };
+		B259B6DB1CFDF29600C79ABF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B259B6D91CFDF29600C79ABF /* Model.xcdatamodeld */; };
+		B259B6E11CFDF89000C79ABF /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6DF1CFDF89000C79ABF /* Event.m */; };
+		B259B6E51CFDF9D500C79ABF /* Event+Management.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6E41CFDF9D500C79ABF /* Event+Management.m */; };
+		B259B6E81CFDFB6D00C79ABF /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6E71CFDFB6D00C79ABF /* CoreDataHelper.m */; };
+		B259B6EE1CFE06F300C79ABF /* Event+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6ED1CFE06F300C79ABF /* Event+CoreDataProperties.m */; };
+		B259B6F01CFE3BCB00C79ABF /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B259B6EF1CFE3BCB00C79ABF /* Gimbal.framework */; };
+		B259B6F21CFE4CD900C79ABF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B259B6F11CFE4CD900C79ABF /* libz.tbd */; };
+		B2BAEDE61CF76AD600588B45 /* DSIOAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDDF1CF76AD600588B45 /* DSIOAPI.m */; };
+		B2BAEDE71CF76AD600588B45 /* DSIOClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE11CF76AD600588B45 /* DSIOClient.m */; };
+		B2BAEDE81CF76AD600588B45 /* DSIOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */; };
+		B2BAEDE91CF76AD600588B45 /* DSIOEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
 		F1C6665F1A849FD900389838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6665D1A849FD900389838 /* Main.storyboard */; };
@@ -43,7 +53,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		154825111B1B8DFC004E5CBF /* Datasnap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Datasnap.framework; path = "../../datasnap-ios-sdk/build/Datasnap.framework"; sourceTree = "<group>"; };
+		B259B6DA1CFDF29600C79ABF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B259B6DE1CFDF89000C79ABF /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		B259B6DF1CFDF89000C79ABF /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		B259B6E31CFDF9D500C79ABF /* Event+Management.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+Management.h"; sourceTree = "<group>"; };
+		B259B6E41CFDF9D500C79ABF /* Event+Management.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+Management.m"; sourceTree = "<group>"; };
+		B259B6E61CFDFB6D00C79ABF /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		B259B6E71CFDFB6D00C79ABF /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		B259B6EC1CFE06F300C79ABF /* Event+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B259B6ED1CFE06F300C79ABF /* Event+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B259B6EF1CFE3BCB00C79ABF /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gimbal.framework; sourceTree = "<group>"; };
+		B259B6F11CFE4CD900C79ABF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B2BAEDDE1CF76AD600588B45 /* DSIOAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOAPI.h; sourceTree = "<group>"; };
+		B2BAEDDF1CF76AD600588B45 /* DSIOAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOAPI.m; sourceTree = "<group>"; };
+		B2BAEDE01CF76AD600588B45 /* DSIOClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOClient.h; sourceTree = "<group>"; };
+		B2BAEDE11CF76AD600588B45 /* DSIOClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOClient.m; sourceTree = "<group>"; };
+		B2BAEDE21CF76AD600588B45 /* DSIOConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOConfig.h; sourceTree = "<group>"; };
+		B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOConfig.m; sourceTree = "<group>"; };
+		B2BAEDE41CF76AD600588B45 /* DSIOEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOEventQueue.h; sourceTree = "<group>"; };
+		B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOEventQueue.m; sourceTree = "<group>"; };
 		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,7 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				154825121B1B8DFC004E5CBF /* Datasnap.framework in Frameworks */,
+				B259B6F21CFE4CD900C79ABF /* libz.tbd in Frameworks */,
+				B259B6F01CFE3BCB00C79ABF /* Gimbal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,9 +111,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B259B6E21CFDF89D00C79ABF /* Event Model */ = {
+			isa = PBXGroup;
+			children = (
+				B259B6EC1CFE06F300C79ABF /* Event+CoreDataProperties.h */,
+				B259B6ED1CFE06F300C79ABF /* Event+CoreDataProperties.m */,
+				B259B6E31CFDF9D500C79ABF /* Event+Management.h */,
+				B259B6E41CFDF9D500C79ABF /* Event+Management.m */,
+				B259B6E61CFDFB6D00C79ABF /* CoreDataHelper.h */,
+				B259B6E71CFDFB6D00C79ABF /* CoreDataHelper.m */,
+				B259B6DE1CFDF89000C79ABF /* Event.h */,
+				B259B6DF1CFDF89000C79ABF /* Event.m */,
+				B259B6D91CFDF29600C79ABF /* Model.xcdatamodeld */,
+			);
+			name = "Event Model";
+			sourceTree = "<group>";
+		};
+		B2BAEDDD1CF76AD600588B45 /* datasnap-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				B2BAEDDE1CF76AD600588B45 /* DSIOAPI.h */,
+				B2BAEDDF1CF76AD600588B45 /* DSIOAPI.m */,
+				B2BAEDE01CF76AD600588B45 /* DSIOClient.h */,
+				B2BAEDE11CF76AD600588B45 /* DSIOClient.m */,
+				B2BAEDE21CF76AD600588B45 /* DSIOConfig.h */,
+				B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */,
+				B2BAEDE41CF76AD600588B45 /* DSIOEventQueue.h */,
+				B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */,
+			);
+			path = "datasnap-ios-sdk";
+			sourceTree = "<group>";
+		};
 		F1C666441A849FD900389838 = {
 			isa = PBXGroup;
 			children = (
+				B259B6E21CFDF89D00C79ABF /* Event Model */,
+				B2BAEDDD1CF76AD600588B45 /* datasnap-ios-sdk */,
 				F1C6664F1A849FD900389838 /* dataSnapSample */,
 				F1C6666C1A849FD900389838 /* dataSnapSampleTests */,
 				F1C6664E1A849FD900389838 /* Products */,
@@ -117,7 +179,6 @@
 		F1C666501A849FD900389838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				154825111B1B8DFC004E5CBF /* Datasnap.framework */,
 				F1C666521A849FD900389838 /* main.m */,
 				F2B0A29D907F4620EFD28979 /* Base.lproj */,
 				F2B0ABA92FB77FC92DBF18F8 /* en.lproj */,
@@ -158,6 +219,8 @@
 		F2B0AA13EE21C735CAD7B80D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B259B6F11CFE4CD900C79ABF /* libz.tbd */,
+				B259B6EF1CFE3BCB00C79ABF /* Gimbal.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,8 +343,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C666561A849FD900389838 /* AppDelegate.m in Sources */,
+				B2BAEDE61CF76AD600588B45 /* DSIOAPI.m in Sources */,
+				B259B6EE1CFE06F300C79ABF /* Event+CoreDataProperties.m in Sources */,
+				B259B6E11CFDF89000C79ABF /* Event.m in Sources */,
 				F1C666531A849FD900389838 /* main.m in Sources */,
+				B259B6E51CFDF9D500C79ABF /* Event+Management.m in Sources */,
+				B259B6E81CFDFB6D00C79ABF /* CoreDataHelper.m in Sources */,
+				B259B6DB1CFDF29600C79ABF /* Model.xcdatamodeld in Sources */,
 				F1C666981A84A0EA00389838 /* ViewController.m in Sources */,
+				B2BAEDE81CF76AD600588B45 /* DSIOConfig.m in Sources */,
+				B2BAEDE91CF76AD600588B45 /* DSIOEventQueue.m in Sources */,
+				B2BAEDE71CF76AD600588B45 /* DSIOClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +602,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B259B6D91CFDF29600C79ABF /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B259B6DA1CFDF29600C79ABF /* Model.xcdatamodel */,
+			);
+			currentVersion = B259B6DA1CFDF29600C79ABF /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = dataSnapSample/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F1C666451A849FD900389838 /* Project object */;
 }
