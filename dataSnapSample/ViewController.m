@@ -5,6 +5,7 @@
 #import "DSIOClient.h"
 #import "ViewController.h"
 #import <AdSupport/ASIdentifierManager.h>
+#import <Gimbal/Gimbal.h>
 
 // Unique user ID
 static NSString* global_distinct_id = @"2qM5ckFqzFCcCIdY7xYhBc";
@@ -44,11 +45,25 @@ NSString* currentDate()
 {
     mobile_device_ios_idfa = [self identifierForAdvertising]; // Assign IDFA
     [self logToDeviceAndConsole:mobile_device_ios_idfa];
+
+    self.beaconManager = [GMBLBeaconManager new];
+    [DSIOGimbalClient setupWithOrgID:@"19CYxNMSQvfnnMf1QS4b3Z"
+                           projectId:@"TestApplication2"
+                              APIKey:@"3F34FXD78PCINFR99IYW950W4"
+                           APISecret:@"KA0HdzrZzNjvUq8OnKQoxaReyUayZY0ckNYoMZURxK8"
+                             logging:true
+                            eventNum:1
+                                  id:global_distinct_id
+                            mobileId:mobile_device_ios_idfa];
+    self.beaconManager.delegate = [DSIOGimbalClient sharedClient];
+    [self.beaconManager startListening];
+    [GMBLCommunicationManager startReceivingCommunications];
+
     //[NSTimer scheduledTimerWithTimeInterval:5.0
-                                     //target:self
-                                   //selector:@selector(callEvents)
-                                   //userInfo:nil
-                                    //repeats:YES];
+    //target:self
+    //selector:@selector(callEvents)
+    //userInfo:nil
+    //repeats:YES];
 }
 
 - (void)logToDeviceAndConsole:(NSString*)eventName
@@ -171,19 +186,24 @@ NSString* currentDate()
     [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)event];
     [self logToDeviceAndConsole:@"Datasnap Example Campaign Communication Event"];
 }
-- (IBAction)beaconSightingButtonTouched:(id)sender {
+- (IBAction)beaconSightingButtonTouched:(id)sender
+{
     [self exampleBeaconSighting];
 }
-- (IBAction)beaconArrivalButtonTouched:(id)sender {
+- (IBAction)beaconArrivalButtonTouched:(id)sender
+{
     [self exampleBeaconArrive];
 }
-- (IBAction)beaconDepartButtonTouched:(id)sender {
+- (IBAction)beaconDepartButtonTouched:(id)sender
+{
     [self exampleBeaconDepart];
 }
-- (IBAction)geofenceDepartButtonTouched:(id)sender {
+- (IBAction)geofenceDepartButtonTouched:(id)sender
+{
     [self exampleGeofenceDepart];
 }
-- (IBAction)campaignEventButtonTouched:(id)sender {
+- (IBAction)campaignEventButtonTouched:(id)sender
+{
     [self exampleCampaignEvent];
 }
 

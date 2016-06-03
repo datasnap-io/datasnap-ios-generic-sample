@@ -61,6 +61,8 @@ static NSString* const kDataSnapEventAPIURL = @"https://api-events-staging.datas
                                             }
                                             else if (resp.statusCode > 204) {
                                                 DSIOLog(@"Something went wrong with the request. Status Code %d", resp.statusCode);
+                                                DSIOLog(@"%@", response);
+                                                DSIOLog(@"%@", jsonStr);
                                             }
                                             else {
                                                 DSIOLog(@"Request successfully sent to %@.\nStatus code: %d.\nData Sent: %@.\n", url, resp.statusCode, jsonStr);

@@ -18,6 +18,7 @@
 		B2BAEDE71CF76AD600588B45 /* DSIOClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE11CF76AD600588B45 /* DSIOClient.m */; };
 		B2BAEDE81CF76AD600588B45 /* DSIOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */; };
 		B2BAEDE91CF76AD600588B45 /* DSIOEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */; };
+		B2CCA9021CFF8C6400F3DE0F /* DSIOGimbalClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CCA9011CFF8C6400F3DE0F /* DSIOGimbalClient.m */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
 		F1C6665F1A849FD900389838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6665D1A849FD900389838 /* Main.storyboard */; };
@@ -72,6 +73,8 @@
 		B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOConfig.m; sourceTree = "<group>"; };
 		B2BAEDE41CF76AD600588B45 /* DSIOEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOEventQueue.h; sourceTree = "<group>"; };
 		B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOEventQueue.m; sourceTree = "<group>"; };
+		B2CCA9001CFF8C6400F3DE0F /* DSIOGimbalClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOGimbalClient.h; sourceTree = "<group>"; };
+		B2CCA9011CFF8C6400F3DE0F /* DSIOGimbalClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOGimbalClient.m; sourceTree = "<group>"; };
 		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */,
 				B2BAEDE41CF76AD600588B45 /* DSIOEventQueue.h */,
 				B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */,
+				B2CCA9001CFF8C6400F3DE0F /* DSIOGimbalClient.h */,
+				B2CCA9011CFF8C6400F3DE0F /* DSIOGimbalClient.m */,
 			);
 			path = "datasnap-ios-sdk";
 			sourceTree = "<group>";
@@ -283,7 +288,7 @@
 				TargetAttributes = {
 					F1C6664C1A849FD900389838 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 3D92X9E67R;
+						DevelopmentTeam = 4ZA743CZ54;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -348,6 +353,7 @@
 				B259B6E11CFDF89000C79ABF /* Event.m in Sources */,
 				F1C666531A849FD900389838 /* main.m in Sources */,
 				B259B6E51CFDF9D500C79ABF /* Event+Management.m in Sources */,
+				B2CCA9021CFF8C6400F3DE0F /* DSIOGimbalClient.m in Sources */,
 				B259B6E81CFDFB6D00C79ABF /* CoreDataHelper.m in Sources */,
 				B259B6DB1CFDF29600C79ABF /* Model.xcdatamodeld in Sources */,
 				F1C666981A84A0EA00389838 /* ViewController.m in Sources */,
@@ -499,7 +505,7 @@
 					"$(PROJECT_DIR)/datasnap-ios-sdk",
 					"$(PROJECT_DIR)/DSIOClient-1.0.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Datasnap.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Datasnap.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -527,7 +533,7 @@
 					"$(PROJECT_DIR)/datasnap-ios-sdk",
 					"$(PROJECT_DIR)/DSIOClient-1.0.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Datasnap.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Datasnap.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

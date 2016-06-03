@@ -1,21 +1,15 @@
 //
 //  Copyright (c) 2014 Datasnap.io. All rights reserved.
 //  Datasnap Generic Sample
-
+#import <Gimbal/Gimbal.h>
 #import "AppDelegate.h"
-#import "DSIOClient.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-    [DSIOClient setupWithOrgID:@"19CYxNMSQvfnnMf1QS4b3Z"
-                     projectId:@"TestApplication2"
-                        APIKey:@"3F34FXD78PCINFR99IYW950W4"
-                     APISecret:@"KA0HdzrZzNjvUq8OnKQoxaReyUayZY0ckNYoMZURxK8"
-                       logging:true
-                      eventNum:1];
-
+    [Gimbal setAPIKey:@"fe1f7079-f682-4a57-8c72-a07c7c5fcc52" options:nil];
+    [Gimbal start];
     return YES;
 }
 
@@ -47,7 +41,6 @@
 
 - (void)applicationWillTerminate:(UIApplication*)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 @end
