@@ -1,22 +1,33 @@
 //
 //  Copyright (c) 2014 Datasnap.io. All rights reserved.
 //  Datasnap Generic Sample
-#import <Gimbal/Gimbal.h>
 #import "AppDelegate.h"
+#import <Gimbal/Gimbal.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-    [Gimbal setAPIKey:@"fe1f7079-f682-4a57-8c72-a07c7c5fcc52" options:nil];
+    [Gimbal setAPIKey:@"74e344e9-9625-4b9d-96cf-e7805479d33c" options:nil];
     [Gimbal start];
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings* mySettings =
+        [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     return YES;
 }
-
-- (void)application:(UIApplication*)application didReceiveLocalNotification:(UILocalNotification*)notification
+- (void)application:(UIApplication*)app
+    didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
+    [Gimbal setPushDeviceToken:deviceToken];
 }
 
+- (void)application:(UIApplication*)app
+    didFailToRegisterForRemoteNotificationsWithError:(NSError*)err
+{
+    NSLog(@"Error in registration. Error: %@", err);
+}
 - (void)applicationWillResignActive:(UIApplication*)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

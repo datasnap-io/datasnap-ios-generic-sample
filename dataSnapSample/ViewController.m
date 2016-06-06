@@ -45,8 +45,6 @@ NSString* currentDate()
 {
     mobile_device_ios_idfa = [self identifierForAdvertising]; // Assign IDFA
     [self logToDeviceAndConsole:mobile_device_ios_idfa];
-
-    self.beaconManager = [GMBLBeaconManager new];
     [DSIOGimbalClient setupWithOrgID:@"19CYxNMSQvfnnMf1QS4b3Z"
                            projectId:@"TestApplication2"
                               APIKey:@"3F34FXD78PCINFR99IYW950W4"
@@ -55,15 +53,13 @@ NSString* currentDate()
                             eventNum:1
                                   id:global_distinct_id
                             mobileId:mobile_device_ios_idfa];
+    self.beaconManager = [GMBLBeaconManager new];
     self.beaconManager.delegate = [DSIOGimbalClient sharedClient];
     [self.beaconManager startListening];
+    self.communicationManager = [GMBLCommunicationManager new];
+    self.communicationManager.delegate = [DSIOGimbalClient sharedClient];
+    [GMBLPlaceManager startMonitoring];
     [GMBLCommunicationManager startReceivingCommunications];
-
-    //[NSTimer scheduledTimerWithTimeInterval:5.0
-    //target:self
-    //selector:@selector(callEvents)
-    //userInfo:nil
-    //repeats:YES];
 }
 
 - (void)logToDeviceAndConsole:(NSString*)eventName

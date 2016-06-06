@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B24C1A051D06153500580365 /* Communication.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C1A041D06153500580365 /* Communication.m */; };
+		B24C1A091D06196800580365 /* Campaign.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C1A081D06196800580365 /* Campaign.m */; };
 		B259B6DB1CFDF29600C79ABF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B259B6D91CFDF29600C79ABF /* Model.xcdatamodeld */; };
 		B259B6E11CFDF89000C79ABF /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6DF1CFDF89000C79ABF /* Event.m */; };
 		B259B6E51CFDF9D500C79ABF /* Event+Management.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6E41CFDF9D500C79ABF /* Event+Management.m */; };
@@ -54,6 +56,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B24C1A031D06153500580365 /* Communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communication.h; sourceTree = "<group>"; };
+		B24C1A041D06153500580365 /* Communication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communication.m; sourceTree = "<group>"; };
+		B24C1A071D06196800580365 /* Campaign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Campaign.h; sourceTree = "<group>"; };
+		B24C1A081D06196800580365 /* Campaign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Campaign.m; sourceTree = "<group>"; };
 		B259B6DA1CFDF29600C79ABF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B259B6DE1CFDF89000C79ABF /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		B259B6DF1CFDF89000C79ABF /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
@@ -114,6 +120,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B24C1A061D06154500580365 /* Event Properties */ = {
+			isa = PBXGroup;
+			children = (
+				B24C1A031D06153500580365 /* Communication.h */,
+				B24C1A041D06153500580365 /* Communication.m */,
+				B24C1A071D06196800580365 /* Campaign.h */,
+				B24C1A081D06196800580365 /* Campaign.m */,
+			);
+			name = "Event Properties";
+			path = "datasnap-ios-sdk";
+			sourceTree = "<group>";
+		};
 		B259B6E21CFDF89D00C79ABF /* Event Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +168,7 @@
 		F1C666441A849FD900389838 = {
 			isa = PBXGroup;
 			children = (
+				B24C1A061D06154500580365 /* Event Properties */,
 				B259B6E21CFDF89D00C79ABF /* Event Model */,
 				B2BAEDDD1CF76AD600588B45 /* datasnap-ios-sdk */,
 				F1C6664F1A849FD900389838 /* dataSnapSample */,
@@ -288,9 +307,12 @@
 				TargetAttributes = {
 					F1C6664C1A849FD900389838 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 4ZA743CZ54;
+						DevelopmentTeam = 3WBDCZ68AG;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -353,6 +375,8 @@
 				B259B6E11CFDF89000C79ABF /* Event.m in Sources */,
 				F1C666531A849FD900389838 /* main.m in Sources */,
 				B259B6E51CFDF9D500C79ABF /* Event+Management.m in Sources */,
+				B24C1A051D06153500580365 /* Communication.m in Sources */,
+				B24C1A091D06196800580365 /* Campaign.m in Sources */,
 				B2CCA9021CFF8C6400F3DE0F /* DSIOGimbalClient.m in Sources */,
 				B259B6E81CFDFB6D00C79ABF /* CoreDataHelper.m in Sources */,
 				B259B6DB1CFDF29600C79ABF /* Model.xcdatamodeld in Sources */,
@@ -490,7 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.datasnap.iospush";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -505,7 +529,7 @@
 					"$(PROJECT_DIR)/datasnap-ios-sdk",
 					"$(PROJECT_DIR)/DSIOClient-1.0.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Datasnap.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datasnap.iospush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -517,7 +541,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.datasnap.iospush";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -533,7 +557,7 @@
 					"$(PROJECT_DIR)/datasnap-ios-sdk",
 					"$(PROJECT_DIR)/DSIOClient-1.0.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Datasnap.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datasnap.iospush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

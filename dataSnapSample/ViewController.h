@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton* geofenceDepartButton;
 @property (weak, nonatomic) IBOutlet UIButton* campaignEventButton;
 @property (nonatomic) GMBLBeaconManager* beaconManager;
-@property (nonatomic) GMBLPlaceManager* placeManager;
+@property (nonatomic) GMBLCommunicationManager* communicationManager;
 @end
 
 #define DeviceLog(message, ...) self.deviceDisplay.text = [self.deviceDisplay.text stringByAppendingString:[NSString stringWithFormat:message, ##__VA_ARGS__]]

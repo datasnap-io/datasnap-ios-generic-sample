@@ -5,16 +5,19 @@
 //  Created by Alyssa McIntyre on 6/1/16.
 //  Copyright © 2016 Datasnapio. All rights reserved.
 //
+#import "Campaign.h"
+#import "Communication.h"
 #import "DSIOAPI.h"
 #import "DSIOClient.h"
 #import "DSIOEventQueue.h"
 #import <Gimbal/Gimbal.h>
 
-@interface DSIOGimbalClient : DSIOClient <GMBLBeaconManagerDelegate>
-@property DSIOClient* client;
+@interface DSIOGimbalClient : DSIOClient <GMBLBeaconManagerDelegate, GMBLCommunicationManagerDelegate>
 @property NSDictionary* sighting;
 @property NSString* global_distinct_id;
 @property NSString* mobile_device_ios_idfa;
+@property (nonatomic) NSString* organizationID;
+@property (nonatomic) NSString* projectID;
 @property (nonatomic, strong) DSIOAPI* api;
 + (void)setupWithOrgID:(NSString*)organizationID
              projectId:(NSString*)projectID
