@@ -86,14 +86,14 @@ static NSString* __version = @"1.0.4";
 {
     NSMutableDictionary* eventDetailsCopy = [eventDetails mutableCopy];
     NSDictionary* deviceInfo = [self deviceInfo];
-    [eventDetailsCopy addEntriesFromDictionary:@{ @"organization_ids" : @[ __organizationID] ,
-        @"project_ids" : @[ __projectID] ,
-        @"sdk_version" :  __version ,
-        @"device_info" : @{ @"platform" : [deviceInfo objectForKey:@"platform"],
+    [eventDetailsCopy addEntriesFromDictionary:@{ @"organization_ids" : @[ __organizationID ],
+        @"project_ids" : @[ __projectID ],
+        @"sdk_version" : __version,
+        @"device_info" : @{
+            @"platform" : [deviceInfo objectForKey:@"platform"],
             @"system_name" : [deviceInfo objectForKey:@"system_name"],
-            @"system_version" : [deviceInfo objectForKey:@"system_version"],
-           // @"device_name" : [deviceInfo objectForKey:@"device_name"]
-                            }
+            @"system_version" : [deviceInfo objectForKey:@"system_version"]
+        }
     }];
     [self.eventQueue recordEvent:eventDetailsCopy];
     [self checkQueue];
@@ -107,9 +107,10 @@ static NSString* __version = @"1.0.4";
 - (void)checkQueue
 {
     if (self.eventQueue.numberOfQueuedEvents >= self.eventQueue.queueLength) {
-        DSIOLog(@"Queue is full. %d will be sent to service and flushed.", (int)self.eventQueue.numberOfQueuedEvents);
-        [self.api sendEvents:self.eventQueue.getEvents];
-        [self flushEvents];
+        if ([self.api sendEvents:self.eventQueue.getEvents]) {
+            DSIOLog(@"Queue is full. %d will be sent to service and flushed.", (int)self.eventQueue.numberOfQueuedEvents);
+            [self flushEvents];
+        }
     }
 }
 
