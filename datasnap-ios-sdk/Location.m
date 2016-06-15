@@ -13,7 +13,7 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"coordinates" : self.coordinates
+        @"coordinates" : self.coordinates ? self.coordinates : [NSNull null]
     };
     return dictionary;
 }

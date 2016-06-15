@@ -26,10 +26,10 @@
 
 - (NSDictionary*)convertToDictionary
 {
-    NSDictionary* dictionary = @{ @"tags" : [self.tags convertToDictionary],
-        @"id:" : [self.identifier convertToDictionary],
-        @"audience" : self.audience,
-        @"user_properties" : [self.userProperties convertToDictionary]
+    NSDictionary* dictionary = @{ @"tags" : [self.tags convertToDictionary] ? [self.tags convertToDictionary] : [NSNull null],
+        @"id" : [self.identifier convertToDictionary] ? [self.identifier convertToDictionary] : [NSNull null],
+        @"audience" : self.audience ? self.audience : [NSNull null],
+        @"user_properties" : [self.userProperties convertToDictionary] ? [self.userProperties convertToDictionary] : [NSNull null]
     };
     return dictionary;
 }

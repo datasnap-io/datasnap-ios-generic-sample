@@ -13,7 +13,7 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"tags" : self.tags
+        @"tags" : self.tags ? self.tags : [NSNull null]
     };
     return dictionary;
 }

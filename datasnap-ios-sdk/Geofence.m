@@ -17,11 +17,11 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"id" : self.identifier,
-        @"name" : self.name,
-        @"visibility" : self.visibility,
-        @"tags" : [self.tags convertToDictionary],
-        @"geofence_circle" : [self.geofenceCircle convertToDictionary]
+        @"id" : self.identifier ? self.identifier : [NSNull null],
+        @"name" : self.name ? self.name : [NSNull null],
+        @"visibility" : self.visibility ? self.visibility : [NSNull null],
+        @"tags" : [self.tags convertToDictionary] ? [self.tags convertToDictionary] : [NSNull null],
+        @"geofence_circle" : [self.geofenceCircle convertToDictionary] ? [self.geofenceCircle convertToDictionary] : [NSNull null]
     };
     return dictionary;
 }

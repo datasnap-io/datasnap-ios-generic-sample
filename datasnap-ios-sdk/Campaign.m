@@ -19,7 +19,7 @@
         @"title" : self.title,
         @"id" : self.identifier,
         @"communication_ids" : self.communicationIds,
-        @"tags" : [self.tags convertToDictionary]
+        @"tags" : [self.tags convertToDictionary] ? [self.tags convertToDictionary] : [NSNull null]
     };
     return dictionary;
 }

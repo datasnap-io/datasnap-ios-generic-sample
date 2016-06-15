@@ -23,7 +23,7 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"user_agent" : self.userAgent,
+        @"user_agent" : self.userAgent ? self.userAgent : [NSNull null],
         @"ip_address" : self.ipAddress,
         @"platform" : self.platform,
         @"os_version" : self.osVersion,
@@ -33,7 +33,7 @@
         @"vendor_id" : self.vendorId,
         @"carrier_name" : self.carrierName,
         @"country_code" : self.countryCode,
-        @"network_code" : self.networkCode
+        @"network_code" : self.networkCode ? self.networkCode : [NSNull null]
     };
     return dictionary;
 }

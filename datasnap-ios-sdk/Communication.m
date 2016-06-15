@@ -23,11 +23,11 @@
         @"description" : self.description,
         @"id" : self.identifier,
         @"title" : self.title,
-        @"types" : [self.types convertToDictionary],
-        @"content" : [self.content convertToDictionary],
-        @"status" : self.status,
+        @"types" : [self.types convertToDictionary] ? [self.types convertToDictionary] : [NSNull null],
+        @"content" : [self.content convertToDictionary] ? [self.content convertToDictionary] : [NSNull null],
+        @"status" : self.status ? self.status : [NSNull null],
         @"communication_vendor_id" : self.communicationVendorId,
-        @"tags" : [self.tags convertToDictionary]
+        @"tags" : [self.tags convertToDictionary] ? [self.tags convertToDictionary] : [NSNull null]
     };
     return dictionary;
 }

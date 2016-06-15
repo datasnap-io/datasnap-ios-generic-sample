@@ -15,7 +15,7 @@
     vendorProperties.gimbalApiKey = @"74e344e9-9625-4b9d-96cf-e7805479d33c";
     NSString* apiKey = @"3F34FXD78PCINFR99IYW950W4";
     NSString* apiSecret = @"KA0HdzrZzNjvUq8OnKQoxaReyUayZY0ckNYoMZURxK8";
-    [DataSnap setUpDataSnapWithApiKey:apiKey apiKeySecret:apiSecret organizationId:@"19CYxNMSQvfnnMf1QS4b3Z" projectId:@"21213f8b-8341-4ef3-a6b8-ed0f84945186" eventQueueSize:5 andVendorProperties:vendorProperties];
+    [DataSnap setUpDataSnapWithApiKey:apiKey apiKeySecret:apiSecret organizationId:@"19CYxNMSQvfnnMf1QS4b3Z" projectId:@"21213f8b-8341-4ef3-a6b8-ed0f84945186" eventQueueSize:1 andVendorProperties:vendorProperties];
     return YES;
 }
 - (void)application:(UIApplication*)app

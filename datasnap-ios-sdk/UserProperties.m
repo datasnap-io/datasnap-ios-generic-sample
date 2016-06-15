@@ -14,9 +14,9 @@
 @synthesize engagementTime;
 - (NSDictionary*)convertToDictionary
 {
-    NSDictionary* dictionary = @{ @"user_type" : self.userType,
-        @"high" : self.high,
-        @"engagement_type" : self.engagementTime
+    NSDictionary* dictionary = @{ @"user_type" : self.userType ? self.userType : [NSNull null],
+        @"high" : self.high ? self.high : [NSNull null],
+        @"engagement_type" : self.engagementTime ? self.engagementTime : [NSNull null]
     };
     return dictionary;
 }

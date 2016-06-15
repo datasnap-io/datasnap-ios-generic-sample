@@ -17,11 +17,11 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"text" : self.text,
-        @"description" : self.description,
-        @"image" : self.image,
-        @"html" : self.html,
-        @"url" : self.url
+        @"text" : self.text ? self.text : [NSNull null],
+        @"description" : self.description ? self.description : [NSNull null],
+        @"image" : self.image ? self.image : [NSNull null],
+        @"html" : self.html ? self.html : [NSNull null],
+        @"url" : self.url ? self.url : [NSNull null]
     };
     return dictionary;
 }

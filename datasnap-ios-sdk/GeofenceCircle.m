@@ -14,8 +14,8 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"radius" : self.radius,
-        @"location" : [self.location convertToDictionary]
+        @"radius" : self.radius ? self.radius : [NSNull null],
+        @"location" : [self.location convertToDictionary] ? [self.location convertToDictionary] : [NSNull null]
     };
     return dictionary;
 }

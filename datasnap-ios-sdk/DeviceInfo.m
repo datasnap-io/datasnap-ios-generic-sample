@@ -22,7 +22,7 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"created" : self.created,
+        @"created" : self.created ? self.created : [NSNull null],
         @"device" : [self.device convertToDictionary]
     };
     return dictionary;

@@ -220,36 +220,36 @@ static DataSnap* sharedInstance = nil;
     [self.eventQueue flushQueue];
 }
 
-//- (void)genericEvent:(NSMutableDictionary*)eventDetails
-//{
-//[self eventHandler:eventDetails];
-//}
+- (void)genericEvent:(NSMutableDictionary*)eventDetails
+{
+[self eventHandler:eventDetails];
+}
 
-//- (void)eventHandler:(NSMutableDictionary*)eventDetails
-//{
-//NSMutableDictionary* eventDetailsCopy = [eventDetails mutableCopy];
-//NSDictionary* deviceInfo = [self deviceInfo];
-//[eventDetailsCopy addEntriesFromDictionary:@{ @"organization_ids" : @[ __organizationID ],
-//@"project_ids" : @[ __projectID ],
-//@"sdk_version" : @"1.0.4",
-//@"device_info" : @{
-//@"platform" : [deviceInfo objectForKey:@"platform"],
-//@"system_name" : [deviceInfo objectForKey:@"system_name"],
-//@"system_version" : [deviceInfo objectForKey:@"system_version"]
-//}
-//}];
-//[self.eventQueue recordEvent:eventDetailsCopy];
-//[self checkQueue];
-//}
+- (void)eventHandler:(NSMutableDictionary*)eventDetails
+{
+NSMutableDictionary* eventDetailsCopy = [eventDetails mutableCopy];
+NSDictionary* deviceInfo = [self deviceInfoDictionary];
+[eventDetailsCopy addEntriesFromDictionary:@{ @"organization_ids" : @[ self.organizationId ],
+@"project_ids" : @[ self.projectId ],
+@"sdk_version" : @"1.0.4",
+@"device_info" : @{
+@"platform" : [deviceInfo objectForKey:@"platform"],
+@"system_name" : [deviceInfo objectForKey:@"system_name"],
+@"system_version" : [deviceInfo objectForKey:@"system_version"]
+}
+}];
+[self.eventQueue recordEvent:eventDetailsCopy];
+[self checkQueue];
+}
 
-//- (NSDictionary*)deviceInfo
-//{
-//NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
-//[info setObject:[UIDevice currentDevice].model forKey:@"platform"];
-//[info setObject:[UIDevice currentDevice].systemName forKey:@"system_name"];
-//[info setObject:[UIDevice currentDevice].systemVersion forKey:@"system_version"];
-//[info setObject:[UIDevice currentDevice].name forKey:@"device_name"];
-//return info;
-//}
+- (NSDictionary*)deviceInfoDictionary
+{
+NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
+[info setObject:[UIDevice currentDevice].model forKey:@"platform"];
+[info setObject:[UIDevice currentDevice].systemName forKey:@"system_name"];
+[info setObject:[UIDevice currentDevice].systemVersion forKey:@"system_version"];
+[info setObject:[UIDevice currentDevice].name forKey:@"device_name"];
+return info;
+}
 
 @end

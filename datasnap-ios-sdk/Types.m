@@ -14,8 +14,8 @@
 - (NSDictionary*)convertToDictionary
 {
     NSDictionary* dictionary = @{
-        @"id" : self.id,
-        @"name" : self.name
+        @"id" : self.id ? self.id : [NSNull null],
+        @"name" : self.name ? self.name : [NSNull null]
     };
     return dictionary;
 }
