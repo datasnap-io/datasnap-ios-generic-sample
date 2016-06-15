@@ -2,7 +2,7 @@
 // Copyright (c) 2015 Datasnapio. All rights reserved.
 //
 
-#import "DSIOClient.h"
+#import "DataSnap.h"
 #import "ViewController.h"
 #import <AdSupport/ASIdentifierManager.h>
 #import <Gimbal/Gimbal.h>
@@ -32,34 +32,8 @@ NSString* currentDate()
     return self;
 }
 
-- (NSString*)identifierForAdvertising
-{
-    if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
-        NSUUID* IDFA = [[ASIdentifierManager sharedManager] advertisingIdentifier];
-        return [IDFA UUIDString];
-    }
-    return nil;
-}
-
 - (void)viewDidLoad
 {
-    mobile_device_ios_idfa = [self identifierForAdvertising]; // Assign IDFA
-    [self logToDeviceAndConsole:mobile_device_ios_idfa];
-    [DSIOGimbalClient setupWithOrgID:@"19CYxNMSQvfnnMf1QS4b3Z"
-                           projectId:@"TestApplication2"
-                              APIKey:@"3F34FXD78PCINFR99IYW950W4"
-                           APISecret:@"KA0HdzrZzNjvUq8OnKQoxaReyUayZY0ckNYoMZURxK8"
-                             logging:true
-                            eventNum:1
-                                  id:global_distinct_id
-                            mobileId:mobile_device_ios_idfa];
-    self.beaconManager = [GMBLBeaconManager new];
-    self.beaconManager.delegate = [DSIOGimbalClient sharedClient];
-    [self.beaconManager startListening];
-    self.communicationManager = [GMBLCommunicationManager new];
-    self.communicationManager.delegate = [DSIOGimbalClient sharedClient];
-    [GMBLPlaceManager startMonitoring];
-    [GMBLCommunicationManager startReceivingCommunications];
 }
 
 - (void)logToDeviceAndConsole:(NSString*)eventName
@@ -82,7 +56,7 @@ NSString* currentDate()
         },
         @"datasnap" : @{ @"created" : currentDate() } };
 
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
+    [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
     [self logToDeviceAndConsole:@"Datasnap Example Beacon Sighting Event"];
 }
 
@@ -98,7 +72,7 @@ NSString* currentDate()
                                 @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
+    [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
     [self logToDeviceAndConsole:@"Datasnap Example Beacon Arrival Event"];
 }
 
@@ -114,7 +88,7 @@ NSString* currentDate()
                                 @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
+    [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
     [self logToDeviceAndConsole:@"Datasnap Example Beacon Departure Event"];
 }
 
@@ -129,7 +103,7 @@ NSString* currentDate()
                                 @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
+    [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
     [self logToDeviceAndConsole:@"Datasnap Example Geofence Arrival Event"];
 }
 
@@ -144,7 +118,7 @@ NSString* currentDate()
                                 @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
+    [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
     [self logToDeviceAndConsole:@"Datasnap Example Geofence Departure Event"];
 }
 
@@ -159,7 +133,7 @@ NSString* currentDate()
                                 @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
+    [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
     [self logToDeviceAndConsole:@"Datasnap Example GPS Sighting Event"];
 }
 
@@ -179,7 +153,7 @@ NSString* currentDate()
                                 @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
-    [[DSIOClient sharedClient] genericEvent:(NSMutableDictionary*)event];
+    [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)event];
     [self logToDeviceAndConsole:@"Datasnap Example Campaign Communication Event"];
 }
 - (IBAction)beaconSightingButtonTouched:(id)sender

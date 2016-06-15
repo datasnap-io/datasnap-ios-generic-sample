@@ -11,4 +11,16 @@
 @implementation Campaign
 @synthesize title;
 @synthesize identifier;
+@synthesize communicationIds;
+@synthesize tags;
+- (NSDictionary*)convertToDictionary
+{
+    NSDictionary* dictionary = @{
+        @"title" : self.title,
+        @"id" : self.identifier,
+        @"communication_ids" : self.communicationIds,
+        @"tags" : [self.tags convertToDictionary]
+    };
+    return dictionary;
+}
 @end

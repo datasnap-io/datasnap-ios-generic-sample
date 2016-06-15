@@ -7,20 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B20B0F5D1D1072760065628F /* DSIOBaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B20B0F5C1D1072760065628F /* DSIOBaseClient.m */; };
 		B24C1A051D06153500580365 /* Communication.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C1A041D06153500580365 /* Communication.m */; };
 		B24C1A091D06196800580365 /* Campaign.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C1A081D06196800580365 /* Campaign.m */; };
 		B259B6DB1CFDF29600C79ABF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B259B6D91CFDF29600C79ABF /* Model.xcdatamodeld */; };
-		B259B6E11CFDF89000C79ABF /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6DF1CFDF89000C79ABF /* Event.m */; };
 		B259B6E51CFDF9D500C79ABF /* Event+Management.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6E41CFDF9D500C79ABF /* Event+Management.m */; };
 		B259B6E81CFDFB6D00C79ABF /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6E71CFDFB6D00C79ABF /* CoreDataHelper.m */; };
-		B259B6EE1CFE06F300C79ABF /* Event+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B259B6ED1CFE06F300C79ABF /* Event+CoreDataProperties.m */; };
 		B259B6F01CFE3BCB00C79ABF /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B259B6EF1CFE3BCB00C79ABF /* Gimbal.framework */; };
 		B259B6F21CFE4CD900C79ABF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B259B6F11CFE4CD900C79ABF /* libz.tbd */; };
 		B2BAEDE61CF76AD600588B45 /* DSIOAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDDF1CF76AD600588B45 /* DSIOAPI.m */; };
-		B2BAEDE71CF76AD600588B45 /* DSIOClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE11CF76AD600588B45 /* DSIOClient.m */; };
 		B2BAEDE81CF76AD600588B45 /* DSIOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */; };
 		B2BAEDE91CF76AD600588B45 /* DSIOEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */; };
+		B2BF28AE1D0B396100056135 /* DataSnap.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BF28AD1D0B396100056135 /* DataSnap.m */; };
+		B2BF28B11D0B564600056135 /* VendorProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BF28B01D0B564600056135 /* VendorProperties.m */; };
 		B2CCA9021CFF8C6400F3DE0F /* DSIOGimbalClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CCA9011CFF8C6400F3DE0F /* DSIOGimbalClient.m */; };
+		B2E411641D088FA8005F48C9 /* BeaconEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411631D088FA8005F48C9 /* BeaconEvent.m */; };
+		B2E411671D088FB9005F48C9 /* CommunicationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411661D088FB9005F48C9 /* CommunicationEvent.m */; };
+		B2E4116A1D088FCA005F48C9 /* GeoFenceEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411691D088FCA005F48C9 /* GeoFenceEvent.m */; };
+		B2E4116D1D088FDD005F48C9 /* GlobalPositionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E4116C1D088FDD005F48C9 /* GlobalPositionEvent.m */; };
+		B2E411701D088FF5005F48C9 /* InteractionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E4116F1D088FF5005F48C9 /* InteractionEvent.m */; };
+		B2E411731D089004005F48C9 /* UpdateEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411721D089004005F48C9 /* UpdateEvent.m */; };
+		B2E4117B1D08906E005F48C9 /* EventEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411781D08906E005F48C9 /* EventEntity+CoreDataProperties.m */; };
+		B2E4117C1D08906E005F48C9 /* EventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E4117A1D08906E005F48C9 /* EventEntity.m */; };
+		B2E4117F1D08911D005F48C9 /* BaseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E4117E1D08911D005F48C9 /* BaseEvent.m */; };
+		B2E411821D0892E4005F48C9 /* EventProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411811D0892E4005F48C9 /* EventProperty.m */; };
+		B2E411851D0892F2005F48C9 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411841D0892F2005F48C9 /* Beacon.m */; };
+		B2E411881D08933C005F48C9 /* DefaultProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411871D08933C005F48C9 /* DefaultProperties.m */; };
+		B2E4118B1D08934B005F48C9 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E4118A1D08934B005F48C9 /* Device.m */; };
+		B2E4118E1D08935B005F48C9 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E4118D1D08935B005F48C9 /* DeviceInfo.m */; };
+		B2E411911D08936C005F48C9 /* Geofence.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411901D08936C005F48C9 /* Geofence.m */; };
+		B2E411941D089387005F48C9 /* GlobalPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411931D089387005F48C9 /* GlobalPosition.m */; };
+		B2E411971D0893A0005F48C9 /* Identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411961D0893A0005F48C9 /* Identifier.m */; };
+		B2E4119A1D0893B4005F48C9 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411991D0893B4005F48C9 /* Place.m */; };
+		B2E4119D1D08B386005F48C9 /* Audience.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E4119C1D08B386005F48C9 /* Audience.m */; };
+		B2E411A31D08C09D005F48C9 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411A21D08C09D005F48C9 /* Tags.m */; };
+		B2E411A61D08C219005F48C9 /* Types.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411A51D08C219005F48C9 /* Types.m */; };
+		B2E411A91D08C257005F48C9 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411A81D08C257005F48C9 /* Content.m */; };
+		B2E411AC1D08C943005F48C9 /* GeofenceCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411AB1D08C943005F48C9 /* GeofenceCircle.m */; };
+		B2E411AF1D08CADD005F48C9 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411AE1D08CADD005F48C9 /* Location.m */; };
+		B2E411B21D08CDDE005F48C9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411B11D08CDDE005F48C9 /* User.m */; };
+		B2E411B51D08CE4D005F48C9 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E411B41D08CE4D005F48C9 /* UserProperties.m */; };
 		F1C666531A849FD900389838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666521A849FD900389838 /* main.m */; };
 		F1C666561A849FD900389838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C666551A849FD900389838 /* AppDelegate.m */; };
 		F1C6665F1A849FD900389838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6665D1A849FD900389838 /* Main.storyboard */; };
@@ -56,31 +82,83 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B20B0F5B1D1072760065628F /* DSIOBaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOBaseClient.h; sourceTree = "<group>"; };
+		B20B0F5C1D1072760065628F /* DSIOBaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOBaseClient.m; sourceTree = "<group>"; };
 		B24C1A031D06153500580365 /* Communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communication.h; sourceTree = "<group>"; };
 		B24C1A041D06153500580365 /* Communication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communication.m; sourceTree = "<group>"; };
 		B24C1A071D06196800580365 /* Campaign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Campaign.h; sourceTree = "<group>"; };
 		B24C1A081D06196800580365 /* Campaign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Campaign.m; sourceTree = "<group>"; };
 		B259B6DA1CFDF29600C79ABF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B259B6DE1CFDF89000C79ABF /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		B259B6DF1CFDF89000C79ABF /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		B259B6E31CFDF9D500C79ABF /* Event+Management.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+Management.h"; sourceTree = "<group>"; };
 		B259B6E41CFDF9D500C79ABF /* Event+Management.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+Management.m"; sourceTree = "<group>"; };
 		B259B6E61CFDFB6D00C79ABF /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		B259B6E71CFDFB6D00C79ABF /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
-		B259B6EC1CFE06F300C79ABF /* Event+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B259B6ED1CFE06F300C79ABF /* Event+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B259B6EF1CFE3BCB00C79ABF /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gimbal.framework; sourceTree = "<group>"; };
 		B259B6F11CFE4CD900C79ABF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B2BAEDDE1CF76AD600588B45 /* DSIOAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOAPI.h; sourceTree = "<group>"; };
 		B2BAEDDF1CF76AD600588B45 /* DSIOAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOAPI.m; sourceTree = "<group>"; };
-		B2BAEDE01CF76AD600588B45 /* DSIOClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOClient.h; sourceTree = "<group>"; };
-		B2BAEDE11CF76AD600588B45 /* DSIOClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOClient.m; sourceTree = "<group>"; };
 		B2BAEDE21CF76AD600588B45 /* DSIOConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOConfig.h; sourceTree = "<group>"; };
 		B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOConfig.m; sourceTree = "<group>"; };
 		B2BAEDE41CF76AD600588B45 /* DSIOEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOEventQueue.h; sourceTree = "<group>"; };
 		B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOEventQueue.m; sourceTree = "<group>"; };
+		B2BF28AC1D0B396100056135 /* DataSnap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSnap.h; path = "datasnap-ios-sdk/DataSnap.h"; sourceTree = "<group>"; };
+		B2BF28AD1D0B396100056135 /* DataSnap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSnap.m; path = "datasnap-ios-sdk/DataSnap.m"; sourceTree = "<group>"; };
+		B2BF28AF1D0B564600056135 /* VendorProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VendorProperties.h; path = "datasnap-ios-sdk/VendorProperties.h"; sourceTree = "<group>"; };
+		B2BF28B01D0B564600056135 /* VendorProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VendorProperties.m; path = "datasnap-ios-sdk/VendorProperties.m"; sourceTree = "<group>"; };
 		B2CCA9001CFF8C6400F3DE0F /* DSIOGimbalClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIOGimbalClient.h; sourceTree = "<group>"; };
 		B2CCA9011CFF8C6400F3DE0F /* DSIOGimbalClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSIOGimbalClient.m; sourceTree = "<group>"; };
+		B2E411621D088FA8005F48C9 /* BeaconEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconEvent.h; sourceTree = "<group>"; };
+		B2E411631D088FA8005F48C9 /* BeaconEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconEvent.m; sourceTree = "<group>"; };
+		B2E411651D088FB9005F48C9 /* CommunicationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationEvent.h; sourceTree = "<group>"; };
+		B2E411661D088FB9005F48C9 /* CommunicationEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationEvent.m; sourceTree = "<group>"; };
+		B2E411681D088FCA005F48C9 /* GeoFenceEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFenceEvent.h; sourceTree = "<group>"; };
+		B2E411691D088FCA005F48C9 /* GeoFenceEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFenceEvent.m; sourceTree = "<group>"; };
+		B2E4116B1D088FDD005F48C9 /* GlobalPositionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalPositionEvent.h; sourceTree = "<group>"; };
+		B2E4116C1D088FDD005F48C9 /* GlobalPositionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalPositionEvent.m; sourceTree = "<group>"; };
+		B2E4116E1D088FF5005F48C9 /* InteractionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractionEvent.h; sourceTree = "<group>"; };
+		B2E4116F1D088FF5005F48C9 /* InteractionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractionEvent.m; sourceTree = "<group>"; };
+		B2E411711D089004005F48C9 /* UpdateEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateEvent.h; sourceTree = "<group>"; };
+		B2E411721D089004005F48C9 /* UpdateEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateEvent.m; sourceTree = "<group>"; };
+		B2E411771D08906E005F48C9 /* EventEntity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EventEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B2E411781D08906E005F48C9 /* EventEntity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EventEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B2E411791D08906E005F48C9 /* EventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEntity.h; sourceTree = "<group>"; };
+		B2E4117A1D08906E005F48C9 /* EventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEntity.m; sourceTree = "<group>"; };
+		B2E4117D1D08911D005F48C9 /* BaseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEvent.h; sourceTree = "<group>"; };
+		B2E4117E1D08911D005F48C9 /* BaseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEvent.m; sourceTree = "<group>"; };
+		B2E411801D0892E4005F48C9 /* EventProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProperty.h; sourceTree = "<group>"; };
+		B2E411811D0892E4005F48C9 /* EventProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventProperty.m; sourceTree = "<group>"; };
+		B2E411831D0892F2005F48C9 /* Beacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beacon.h; sourceTree = "<group>"; };
+		B2E411841D0892F2005F48C9 /* Beacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beacon.m; sourceTree = "<group>"; };
+		B2E411861D08933C005F48C9 /* DefaultProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultProperties.h; sourceTree = "<group>"; };
+		B2E411871D08933C005F48C9 /* DefaultProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProperties.m; sourceTree = "<group>"; };
+		B2E411891D08934B005F48C9 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		B2E4118A1D08934B005F48C9 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
+		B2E4118C1D08935B005F48C9 /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
+		B2E4118D1D08935B005F48C9 /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.m; sourceTree = "<group>"; };
+		B2E4118F1D08936C005F48C9 /* Geofence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geofence.h; sourceTree = "<group>"; };
+		B2E411901D08936C005F48C9 /* Geofence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Geofence.m; sourceTree = "<group>"; };
+		B2E411921D089387005F48C9 /* GlobalPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalPosition.h; sourceTree = "<group>"; };
+		B2E411931D089387005F48C9 /* GlobalPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalPosition.m; sourceTree = "<group>"; };
+		B2E411951D0893A0005F48C9 /* Identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Identifier.h; sourceTree = "<group>"; };
+		B2E411961D0893A0005F48C9 /* Identifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Identifier.m; sourceTree = "<group>"; };
+		B2E411981D0893B4005F48C9 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		B2E411991D0893B4005F48C9 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		B2E4119B1D08B386005F48C9 /* Audience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audience.h; sourceTree = "<group>"; };
+		B2E4119C1D08B386005F48C9 /* Audience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audience.m; sourceTree = "<group>"; };
+		B2E411A11D08C09D005F48C9 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
+		B2E411A21D08C09D005F48C9 /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
+		B2E411A41D08C219005F48C9 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		B2E411A51D08C219005F48C9 /* Types.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Types.m; sourceTree = "<group>"; };
+		B2E411A71D08C257005F48C9 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
+		B2E411A81D08C257005F48C9 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
+		B2E411AA1D08C943005F48C9 /* GeofenceCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceCircle.h; sourceTree = "<group>"; };
+		B2E411AB1D08C943005F48C9 /* GeofenceCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceCircle.m; sourceTree = "<group>"; };
+		B2E411AD1D08CADD005F48C9 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		B2E411AE1D08CADD005F48C9 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		B2E411B01D08CDDE005F48C9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		B2E411B11D08CDDE005F48C9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		B2E411B31D08CE4D005F48C9 /* UserProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProperties.h; sourceTree = "<group>"; };
+		B2E411B41D08CE4D005F48C9 /* UserProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProperties.m; sourceTree = "<group>"; };
 		F1C6664D1A849FD900389838 /* dataSnapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataSnapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C666521A849FD900389838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1C666541A849FD900389838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -123,10 +201,44 @@
 		B24C1A061D06154500580365 /* Event Properties */ = {
 			isa = PBXGroup;
 			children = (
-				B24C1A031D06153500580365 /* Communication.h */,
-				B24C1A041D06153500580365 /* Communication.m */,
+				B2E4119B1D08B386005F48C9 /* Audience.h */,
+				B2E4119C1D08B386005F48C9 /* Audience.m */,
+				B2E411831D0892F2005F48C9 /* Beacon.h */,
+				B2E411841D0892F2005F48C9 /* Beacon.m */,
 				B24C1A071D06196800580365 /* Campaign.h */,
 				B24C1A081D06196800580365 /* Campaign.m */,
+				B24C1A031D06153500580365 /* Communication.h */,
+				B24C1A041D06153500580365 /* Communication.m */,
+				B2E411A71D08C257005F48C9 /* Content.h */,
+				B2E411A81D08C257005F48C9 /* Content.m */,
+				B2E411861D08933C005F48C9 /* DefaultProperties.h */,
+				B2E411871D08933C005F48C9 /* DefaultProperties.m */,
+				B2E411891D08934B005F48C9 /* Device.h */,
+				B2E4118A1D08934B005F48C9 /* Device.m */,
+				B2E4118C1D08935B005F48C9 /* DeviceInfo.h */,
+				B2E4118D1D08935B005F48C9 /* DeviceInfo.m */,
+				B2E411801D0892E4005F48C9 /* EventProperty.h */,
+				B2E411811D0892E4005F48C9 /* EventProperty.m */,
+				B2E4118F1D08936C005F48C9 /* Geofence.h */,
+				B2E411901D08936C005F48C9 /* Geofence.m */,
+				B2E411AA1D08C943005F48C9 /* GeofenceCircle.h */,
+				B2E411AB1D08C943005F48C9 /* GeofenceCircle.m */,
+				B2E411921D089387005F48C9 /* GlobalPosition.h */,
+				B2E411931D089387005F48C9 /* GlobalPosition.m */,
+				B2E411951D0893A0005F48C9 /* Identifier.h */,
+				B2E411961D0893A0005F48C9 /* Identifier.m */,
+				B2E411AD1D08CADD005F48C9 /* Location.h */,
+				B2E411AE1D08CADD005F48C9 /* Location.m */,
+				B2E411981D0893B4005F48C9 /* Place.h */,
+				B2E411991D0893B4005F48C9 /* Place.m */,
+				B2E411A11D08C09D005F48C9 /* Tags.h */,
+				B2E411A21D08C09D005F48C9 /* Tags.m */,
+				B2E411A41D08C219005F48C9 /* Types.h */,
+				B2E411A51D08C219005F48C9 /* Types.m */,
+				B2E411B01D08CDDE005F48C9 /* User.h */,
+				B2E411B11D08CDDE005F48C9 /* User.m */,
+				B2E411B31D08CE4D005F48C9 /* UserProperties.h */,
+				B2E411B41D08CE4D005F48C9 /* UserProperties.m */,
 			);
 			name = "Event Properties";
 			path = "datasnap-ios-sdk";
@@ -135,14 +247,14 @@
 		B259B6E21CFDF89D00C79ABF /* Event Model */ = {
 			isa = PBXGroup;
 			children = (
-				B259B6EC1CFE06F300C79ABF /* Event+CoreDataProperties.h */,
-				B259B6ED1CFE06F300C79ABF /* Event+CoreDataProperties.m */,
+				B2E411771D08906E005F48C9 /* EventEntity+CoreDataProperties.h */,
+				B2E411781D08906E005F48C9 /* EventEntity+CoreDataProperties.m */,
+				B2E411791D08906E005F48C9 /* EventEntity.h */,
+				B2E4117A1D08906E005F48C9 /* EventEntity.m */,
 				B259B6E31CFDF9D500C79ABF /* Event+Management.h */,
 				B259B6E41CFDF9D500C79ABF /* Event+Management.m */,
 				B259B6E61CFDFB6D00C79ABF /* CoreDataHelper.h */,
 				B259B6E71CFDFB6D00C79ABF /* CoreDataHelper.m */,
-				B259B6DE1CFDF89000C79ABF /* Event.h */,
-				B259B6DF1CFDF89000C79ABF /* Event.m */,
 				B259B6D91CFDF29600C79ABF /* Model.xcdatamodeld */,
 			);
 			name = "Event Model";
@@ -153,21 +265,55 @@
 			children = (
 				B2BAEDDE1CF76AD600588B45 /* DSIOAPI.h */,
 				B2BAEDDF1CF76AD600588B45 /* DSIOAPI.m */,
-				B2BAEDE01CF76AD600588B45 /* DSIOClient.h */,
-				B2BAEDE11CF76AD600588B45 /* DSIOClient.m */,
 				B2BAEDE21CF76AD600588B45 /* DSIOConfig.h */,
 				B2BAEDE31CF76AD600588B45 /* DSIOConfig.m */,
 				B2BAEDE41CF76AD600588B45 /* DSIOEventQueue.h */,
 				B2BAEDE51CF76AD600588B45 /* DSIOEventQueue.m */,
 				B2CCA9001CFF8C6400F3DE0F /* DSIOGimbalClient.h */,
 				B2CCA9011CFF8C6400F3DE0F /* DSIOGimbalClient.m */,
+				B20B0F5B1D1072760065628F /* DSIOBaseClient.h */,
+				B20B0F5C1D1072760065628F /* DSIOBaseClient.m */,
 			);
 			path = "datasnap-ios-sdk";
+			sourceTree = "<group>";
+		};
+		B2BF28B21D0B578F00056135 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B2BF28B01D0B564600056135 /* VendorProperties.m */,
+				B2BF28AF1D0B564600056135 /* VendorProperties.h */,
+				B2BF28AC1D0B396100056135 /* DataSnap.h */,
+				B2BF28AD1D0B396100056135 /* DataSnap.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		B2E411611D088F91005F48C9 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				B2E411621D088FA8005F48C9 /* BeaconEvent.h */,
+				B2E411631D088FA8005F48C9 /* BeaconEvent.m */,
+				B2E411651D088FB9005F48C9 /* CommunicationEvent.h */,
+				B2E411661D088FB9005F48C9 /* CommunicationEvent.m */,
+				B2E411681D088FCA005F48C9 /* GeoFenceEvent.h */,
+				B2E411691D088FCA005F48C9 /* GeoFenceEvent.m */,
+				B2E4116B1D088FDD005F48C9 /* GlobalPositionEvent.h */,
+				B2E4116C1D088FDD005F48C9 /* GlobalPositionEvent.m */,
+				B2E4116E1D088FF5005F48C9 /* InteractionEvent.h */,
+				B2E4116F1D088FF5005F48C9 /* InteractionEvent.m */,
+				B2E411711D089004005F48C9 /* UpdateEvent.h */,
+				B2E411721D089004005F48C9 /* UpdateEvent.m */,
+				B2E4117D1D08911D005F48C9 /* BaseEvent.h */,
+				B2E4117E1D08911D005F48C9 /* BaseEvent.m */,
+			);
+			name = Events;
 			sourceTree = "<group>";
 		};
 		F1C666441A849FD900389838 = {
 			isa = PBXGroup;
 			children = (
+				B2BF28B21D0B578F00056135 /* Utilities */,
+				B2E411611D088F91005F48C9 /* Events */,
 				B24C1A061D06154500580365 /* Event Properties */,
 				B259B6E21CFDF89D00C79ABF /* Event Model */,
 				B2BAEDDD1CF76AD600588B45 /* datasnap-ios-sdk */,
@@ -369,21 +515,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2E4119A1D0893B4005F48C9 /* Place.m in Sources */,
+				B2BF28AE1D0B396100056135 /* DataSnap.m in Sources */,
+				B2E4117F1D08911D005F48C9 /* BaseEvent.m in Sources */,
 				F1C666561A849FD900389838 /* AppDelegate.m in Sources */,
+				B2E4119D1D08B386005F48C9 /* Audience.m in Sources */,
 				B2BAEDE61CF76AD600588B45 /* DSIOAPI.m in Sources */,
-				B259B6EE1CFE06F300C79ABF /* Event+CoreDataProperties.m in Sources */,
-				B259B6E11CFDF89000C79ABF /* Event.m in Sources */,
+				B2E411851D0892F2005F48C9 /* Beacon.m in Sources */,
+				B2E411971D0893A0005F48C9 /* Identifier.m in Sources */,
+				B2E411641D088FA8005F48C9 /* BeaconEvent.m in Sources */,
+				B2E411911D08936C005F48C9 /* Geofence.m in Sources */,
+				B2E4116A1D088FCA005F48C9 /* GeoFenceEvent.m in Sources */,
+				B2E4118E1D08935B005F48C9 /* DeviceInfo.m in Sources */,
 				F1C666531A849FD900389838 /* main.m in Sources */,
 				B259B6E51CFDF9D500C79ABF /* Event+Management.m in Sources */,
+				B2E4117C1D08906E005F48C9 /* EventEntity.m in Sources */,
 				B24C1A051D06153500580365 /* Communication.m in Sources */,
+				B2BF28B11D0B564600056135 /* VendorProperties.m in Sources */,
+				B2E411881D08933C005F48C9 /* DefaultProperties.m in Sources */,
 				B24C1A091D06196800580365 /* Campaign.m in Sources */,
 				B2CCA9021CFF8C6400F3DE0F /* DSIOGimbalClient.m in Sources */,
+				B2E4116D1D088FDD005F48C9 /* GlobalPositionEvent.m in Sources */,
 				B259B6E81CFDFB6D00C79ABF /* CoreDataHelper.m in Sources */,
+				B2E411A31D08C09D005F48C9 /* Tags.m in Sources */,
 				B259B6DB1CFDF29600C79ABF /* Model.xcdatamodeld in Sources */,
 				F1C666981A84A0EA00389838 /* ViewController.m in Sources */,
+				B2E411A61D08C219005F48C9 /* Types.m in Sources */,
+				B2E411671D088FB9005F48C9 /* CommunicationEvent.m in Sources */,
+				B2E411AC1D08C943005F48C9 /* GeofenceCircle.m in Sources */,
+				B2E4117B1D08906E005F48C9 /* EventEntity+CoreDataProperties.m in Sources */,
 				B2BAEDE81CF76AD600588B45 /* DSIOConfig.m in Sources */,
+				B2E411941D089387005F48C9 /* GlobalPosition.m in Sources */,
+				B2E411B51D08CE4D005F48C9 /* UserProperties.m in Sources */,
 				B2BAEDE91CF76AD600588B45 /* DSIOEventQueue.m in Sources */,
-				B2BAEDE71CF76AD600588B45 /* DSIOClient.m in Sources */,
+				B2E411AF1D08CADD005F48C9 /* Location.m in Sources */,
+				B2E411701D088FF5005F48C9 /* InteractionEvent.m in Sources */,
+				B2E4118B1D08934B005F48C9 /* Device.m in Sources */,
+				B2E411B21D08CDDE005F48C9 /* User.m in Sources */,
+				B2E411821D0892E4005F48C9 /* EventProperty.m in Sources */,
+				B2E411A91D08C257005F48C9 /* Content.m in Sources */,
+				B20B0F5D1D1072760065628F /* DSIOBaseClient.m in Sources */,
+				B2E411731D089004005F48C9 /* UpdateEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

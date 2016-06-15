@@ -2,8 +2,8 @@
 // Copyright (c) 2015 Datasnapio. All rights reserved.
 //
 
-#import "DSIOClient.h"
 #import "DSIOGimbalClient.h"
+#import "DataSnap.h"
 #import <Gimbal/Gimbal.h>
 #import <UIKit/UIKit.h>
 
@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton* campaignEventButton;
 @property (nonatomic) GMBLBeaconManager* beaconManager;
 @property (nonatomic) GMBLCommunicationManager* communicationManager;
+@property (nonatomic) GMBLPlaceManager* placeManager;
 @end
 
 #define DeviceLog(message, ...) self.deviceDisplay.text = [self.deviceDisplay.text stringByAppendingString:[NSString stringWithFormat:message, ##__VA_ARGS__]]

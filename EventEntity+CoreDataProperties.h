@@ -2,20 +2,20 @@
 //  Event+CoreDataProperties.h
 //  dataSnapSample
 //
-//  Created by Alyssa McIntyre on 5/31/16.
+//  Created by Alyssa McIntyre on 6/8/16.
 //  Copyright © 2016 Datasnapio. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Event.h"
+#import "EventEntity.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Event (CoreDataProperties)
+@interface EventEntity (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *json;
+@property (nullable, nonatomic, retain) NSString* json;
 
 @end
 
