@@ -52,13 +52,6 @@
                                     <action selector="geofenceDepartButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZNi-cI-Ecy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfu-5w-xat">
-                                <rect key="frame" x="228" y="233" width="112" height="30"/>
-                                <state key="normal" title="Campaign Event"/>
-                                <connections>
-                                    <action selector="campaignEventButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uiv-LT-23C"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -70,9 +63,7 @@
                             <constraint firstItem="tkX-7n-O8n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="64" id="KbN-mW-SF9"/>
                             <constraint firstItem="tkX-7n-O8n" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="PCY-Eg-UWB"/>
                             <constraint firstItem="tkX-7n-O8n" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="QK4-xa-0Sf"/>
-                            <constraint firstItem="lfu-5w-xat" firstAttribute="top" secondItem="tkX-7n-O8n" secondAttribute="bottom" constant="189" id="TEk-AO-Ubb"/>
                             <constraint firstItem="HYG-cE-uj0" firstAttribute="top" secondItem="tkX-7n-O8n" secondAttribute="bottom" constant="75" id="Uid-pI-auj"/>
-                            <constraint firstItem="lfu-5w-xat" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ViQ-PH-6Vd"/>
                             <constraint firstItem="Q02-oB-L7F" firstAttribute="top" secondItem="tkX-7n-O8n" secondAttribute="bottom" constant="37" id="hDV-31-NTL"/>
                             <constraint firstItem="vwK-yk-rA4" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="zyP-0K-xCK"/>
                         </constraints>
@@ -81,7 +72,6 @@
                         <outlet property="beaconArrivalButton" destination="HYG-cE-uj0" id="7vM-du-vhd"/>
                         <outlet property="beaconDepartButton" destination="yPt-Y4-WY5" id="VTe-lE-kYo"/>
                         <outlet property="beaconSightingButton" destination="Q02-oB-L7F" id="tcc-Qe-aMe"/>
-                        <outlet property="campaignEventButton" destination="lfu-5w-xat" id="Vbk-gY-qFe"/>
                         <outlet property="geofenceDepartButton" destination="vwK-yk-rA4" id="JYU-zu-Vcw"/>
                     </connections>
                 </viewController>

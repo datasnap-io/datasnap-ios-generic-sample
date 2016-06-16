@@ -10,6 +10,11 @@
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings* mySettings =
+        [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     VendorProperties* vendorProperties = [[VendorProperties alloc] init];
     vendorProperties.vendor = GIMBAL;
     vendorProperties.gimbalApiKey = @"74e344e9-9625-4b9d-96cf-e7805479d33c";

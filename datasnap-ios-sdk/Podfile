@@ -1,0 +1,3 @@
+target 'datasnao-ios-sdk' do
+  pod 'AFNetworking', '~> 3.0'
+end

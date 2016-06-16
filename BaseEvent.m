@@ -9,6 +9,7 @@
 #import "DataSnap.h"
 
 @implementation BaseEvent
+
 @synthesize dataSnapVersion;
 @synthesize eventType;
 @synthesize organizationIds;

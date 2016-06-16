@@ -17,17 +17,14 @@
 #import "Location.h"
 #import "Place.h"
 #import "User.h"
+static NSString* beaconSightingEventType = @"beacon_sighting";
+static NSString* communicationSentEventType = @"ds_communication_sent";
 @implementation DSIOGimbalClient
 
 - (void)startGimbal
 {
     [Gimbal setAPIKey:self.gimbalApiKey options:nil];
     [Gimbal start];
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    UIUserNotificationSettings* mySettings =
-        [UIUserNotificationSettings settingsForTypes:types categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
     self.beaconManager = [GMBLBeaconManager new];
     self.beaconManager.delegate = self;
     [self.beaconManager startListening];
@@ -40,7 +37,7 @@
 }
 - (void)beaconManager:(GMBLBeaconManager*)manager didReceiveBeaconSighting:(GMBLBeaconSighting*)sighting
 {
-    NSString* eventType = @"beacon_sighting";
+    NSString* eventType = beaconSightingEventType;
     Beacon* beacon = [[Beacon alloc] init];
     beacon.identifier = sighting.beacon.identifier;
     beacon.rssi = sighting.beacon.uuid;
@@ -80,7 +77,7 @@
         self.user.identifier.globalDistinctId = self.global_distinct_id;
         self.user.identifier.mobileDeviceIosIdfa = self.mobile_device_ios_idfa;
         CommunicationEvent* event = [[CommunicationEvent alloc] init];
-        event.eventType = @"ds_communication_sent";
+        event.eventType = communicationSentEventType;
         [event.organizationIds addObject:self.organizationId];
         [event.projectIds addObject:self.projectId];
         event.venueOrgId = venueId;
@@ -109,7 +106,7 @@
     self.user.identifier.globalDistinctId = self.global_distinct_id;
     self.user.identifier.mobileDeviceIosIdfa = self.mobile_device_ios_idfa;
     CommunicationEvent* event = [[CommunicationEvent alloc] init];
-    event.eventType = @"ds_communication_sent";
+    event.eventType = communicationSentEventType;
     [event.organizationIds addObject:self.organizationId];
     [event.projectIds addObject:self.projectId];
     event.user = self.user;

@@ -2,9 +2,9 @@
 // Copyright (c) 2015 Datasnapio. All rights reserved.
 //
 
-#import "DSIOGimbalClient.h"
+#import "BaseEvent.h"
 #import "DataSnap.h"
-#import <Gimbal/Gimbal.h>
+#import "GeoFenceEvent.h"
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
@@ -12,10 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIButton* beaconArrivalButton;
 @property (weak, nonatomic) IBOutlet UIButton* beaconDepartButton;
 @property (weak, nonatomic) IBOutlet UIButton* geofenceDepartButton;
-@property (weak, nonatomic) IBOutlet UIButton* campaignEventButton;
-@property (nonatomic) GMBLBeaconManager* beaconManager;
-@property (nonatomic) GMBLCommunicationManager* communicationManager;
-@property (nonatomic) GMBLPlaceManager* placeManager;
+@property (weak, nonatomic) DataSnap* datasnap;
 @end
-
-#define DeviceLog(message, ...) self.deviceDisplay.text = [self.deviceDisplay.text stringByAppendingString:[NSString stringWithFormat:message, ##__VA_ARGS__]]

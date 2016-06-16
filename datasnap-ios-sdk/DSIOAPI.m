@@ -68,7 +68,7 @@ static NSString* const kDataSnapEventAPIURL = @"https://api-events-staging.datas
                                                 success = NO;
                                             }
                                             else {
-                                                NSLog(@"Request successfully sent to %@.\nStatus code: %d.\nData Sent: %@.\n", url, resp.statusCode, jsonStr);
+                                                NSLog(@"Request successfully sent to %@.\nStatus code: %ld.\nData Sent: %@.\n", url, (long)resp.statusCode, jsonStr);
                                                 success = YES;
                                             }
                                         }
