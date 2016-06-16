@@ -31,7 +31,7 @@
         @"manufacturer" : self.manufacturer,
         @"name" : self.name,
         @"vendor_id" : self.vendorId,
-        @"carrier_name" : self.carrierName,
+        @"carrier_name" : self.carrierName ? self.carrierName :[NSNull null],
         @"country_code" : self.countryCode,
         @"network_code" : self.networkCode ? self.networkCode : [NSNull null]
     };

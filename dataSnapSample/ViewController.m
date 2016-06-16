@@ -32,6 +32,15 @@ NSString* currentDate()
     return self;
 }
 
+- (NSString*)identifierForAdvertising
+{
+    if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
+        NSUUID* IDFA = [[ASIdentifierManager sharedManager] advertisingIdentifier];
+        return [IDFA UUIDString];
+    }
+    return nil;
+}
+
 - (void)viewDidLoad
 {
 }
@@ -52,7 +61,7 @@ NSString* currentDate()
             @"rssi" : @-20 },
         @"user" : @{
             @"id" : @{ @"global_distinct_id" : global_distinct_id,
-                @"mobile_device_ios_idfa" : mobile_device_ios_idfa },
+                @"mobile_device_ios_idfa" : [self identifierForAdvertising] },
         },
         @"datasnap" : @{ @"created" : currentDate() } };
 
@@ -69,7 +78,7 @@ NSString* currentDate()
         @"beacon" : @{ @"identifier" : @"3333333",
             @"rssi" : @(-40) },
         @"user" : @{ @"id" : @{ @"global_distinct_id" : global_distinct_id,
-                                @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
+                                @"mobile_device_ios_idfa" : [self identifierForAdvertising] } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
     [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
@@ -85,7 +94,7 @@ NSString* currentDate()
         @"beacon" : @{ @"identifier" : @"3333333",
             @"rssi" : @-50 },
         @"user" : @{ @"id" : @{ @"global_distinct_id" : global_distinct_id,
-                                @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
+                                @"mobile_device_ios_idfa" : [self identifierForAdvertising] } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
     [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
@@ -100,7 +109,7 @@ NSString* currentDate()
     NSDictionary* beaconData = @{ @"event_type" : @"geofence_arrive",
         @"geofence" : @{ @"identifier" : @"44444444" },
         @"user" : @{ @"id" : @{ @"global_distinct_id" : global_distinct_id,
-                                @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
+                                @"mobile_device_ios_idfa" : [self identifierForAdvertising] } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
     [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
@@ -115,7 +124,7 @@ NSString* currentDate()
     NSDictionary* beaconData = @{ @"event_type" : @"geofence_depart",
         @"geofence" : @{ @"identifier" : @"44444444" },
         @"user" : @{ @"id" : @{ @"global_distinct_id" : global_distinct_id,
-                                @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
+                                @"mobile_device_ios_idfa" : [self identifierForAdvertising] } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
     [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
@@ -130,7 +139,7 @@ NSString* currentDate()
     NSDictionary* beaconData = @{ @"event_type" : @"global_position_sighting",
         @"location" : @{ @"coordinates" : @[ @"32.89545949009762, -117.19463284827117" ] },
         @"user" : @{ @"id" : @{ @"global_distinct_id" : global_distinct_id,
-                                @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
+                                @"mobile_device_ios_idfa" : [self identifierForAdvertising] } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
     [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)beaconData];
@@ -150,7 +159,7 @@ NSString* currentDate()
         @"communication" : @{ @"identifier" : @"3333333",
             @"advertiser_org_id" : @"advorgid" },
         @"user" : @{ @"id" : @{ @"global_distinct_id" : global_distinct_id,
-                                @"mobile_device_ios_idfa" : mobile_device_ios_idfa } },
+                                @"mobile_device_ios_idfa" : [self identifierForAdvertising] } },
         @"datasnap" : @{ @"created" : currentDate() } };
 
     [[DataSnap sharedClient] genericEvent:(NSMutableDictionary*)event];
